@@ -1,9 +1,9 @@
 console.log('Server is here')
 
-if (process.env.NODE_DEV !== 'production'){
+// if (process.env.NODE_DEV !== 'production'){
     const dotenv = require('dotenv')
     dotenv.config({path: 'proc.env'}) //add env path
-}
+// }
 const express = require('express')
 const app = express();
 const MongoClient = require('mongodb').MongoClient
