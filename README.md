@@ -1,16 +1,17 @@
 # heroku-dbtest
 "It's a page".
-The skeletal structure of a to-do list that you can't update aside from adding more.
+The skeletal structure of a to-do list that you can't update aside from adding more. Such is life.
 
-Deployment: use Heroku CLI until you figure out what went wrong with autodeploy from Git repo.
-Possibly it's assuming when you push to the repo, you push to Heroku. That seems logical but could be wrong.
-Once switched over to Heroku CLI and explicit git push heroku main, things started working.
-Same thing with jargonauts.
+Using this to test what went wrong with deployment using autodeploy from Github.
+Current/successful deployment is using Heroku CLI.
+My understanding of autodeploy is that pushing to the repo was also pushing to Heroku (and in both cases pushing to main branch).
+
+Once switched over to Heroku CLI and with git push heroku main, things started working.
 
 Live link: https://test-with-db.herokuapp.com/
 
 Other quirks:
 - Must whitelist all IP addresses
-- still protect env variable (connection string) - maybe that's enough
+- still protect env variable (connection string) 
 
 This is not a real CRUD app, only a CRapp.
