@@ -22,3 +22,7 @@ Other quirks:
 - still protect env variable (connection string) 
 
 This is not a real CRUD app, only a CRapp.
+
+## Warnings
+Everything is different in the img-and-crud branch, including inputs and fields. Do not enter any new data from current heroku deployment.
+Next up... autodeployment test. 
