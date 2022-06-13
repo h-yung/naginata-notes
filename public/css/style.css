@@ -1,3 +1,66 @@
+.wrapper {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}
+
 h1 {
     color: tomato;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    margin: 1rem;
+}
+
+img {
+    max-width: 20rem;
+    height: auto;
+    filter:grayscale(1);
+    transition: all 0.5s ease-in 0s;
+}
+
+img:hover {
+    filter:grayscale(0);
+}
+
+figcaption {
+    margin: 0.5rem 0;
+    width: 20rem;
+}
+
+body {
+    padding: 1rem 2rem;
+    justify-content: space-between;
+}
+body > .wrapper {
+    align-items: center;
+}
+
+.results {
+    border: 1px dashed hsla(225, 73%, 57%, 0.736);
+    background: lavender;
+    width: 40%;
+    height: 60vh;
+    padding: 2rem;
+    margin-right: 3rem;
+    overflow-y:scroll;
+}
+
+.update {
+    margin: 1rem 0;
+    padding: 2rem;
+    flex-direction: column;
+    background: lavenderblush;
+}
+
+.update > * {
+    margin: 0.5rem 0;
 }

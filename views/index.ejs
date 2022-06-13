@@ -9,13 +9,49 @@
 </head>
 <body>
     <h1>Homepage</h1>
-    <% for (let i=0; i < info.length; i++){ %>
-        <p><%= info[i].thing %></p>
-    <% } %>
-    <form action = "/thing" method="POST">
-        <input type="text" placeholder="enter a thing" name="thing">
-        <button type="submit">Submit</button>
-    </form>
+    <h2>Buncha pictures</h2>
+    <section class="wrapper">
+        <section class="results">
+            <ul class="wrapper">
+                <% for (let i=0; i<stuff.length; i++) { %>
+                <li>
+                    <h3><%= stuff[i].title %></h3>
+                    <img src="<%= stuff[i].imgURL %>" alt="<%=stuff.caption%>"> <!--do I need closing /?-->
+                    <iframe class="hidden" width="20rem" height="auto" src="<%= stuff[i].vidURL %>"></iframe>
+                    <figcaption><%= stuff[i].caption %></figcaption>
+                </li>
+                <% }%>
+            </ul>
+        </section>
+        <section>
+            <h2>Add entry</h2>
+            <form action="/addPic" method="POST">
+                <input type="text" placeholder="Enter title" name="title">
+                <input type="text" placeholder="img url" name="imgURL">
+                <!-- <input type="text" placeholder="video url" name="vidURL"> -->
+                <input type="text" placeholder="caption" name="caption">
+                <button type="submit">Submit</button>
+            </form>
+            <section class="wrapper update">
+                <h2>Update an entry</h2>
+                <p>Note that you can only update one field at a time. Select by image title.</p>
+                <input type="text" placeholder="Title to update" name="titleChange">
+                <label for="field">Field to update</label>
+                <select id="field" name="field">
+                    <option value="Choose field" selected>Choose field</option>
+                    <option value="Title">Title</option>
+                    <option value="Image URL">Image URL</option>
+                    <!-- <option value="Video URL">Video URL</option> -->
+                    <option value="Caption">Caption</option>
+                </select>
+                <input type="text" placeholder="New input" name="edit">
+                <button data-action="update">Update this entry</button>
+            </section>
+            <h2>Delete an entry</h2>
+            <input type="text" placeholder="Title to delete" name="titleBye">
+            <button data-action="delete">Delete this entry</button>
+        </section>
+    </section>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

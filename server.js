@@ -4,6 +4,7 @@ if (process.env.NODE_DEV !== 'production'){
     const dotenv = require('dotenv')
     dotenv.config({path: 'proc.env'}) //add env path
 }
+const { response } = require('express');
 const express = require('express')
 const app = express();
 const MongoClient = require('mongodb').MongoClient
@@ -28,19 +29,93 @@ MongoClient.connect(process.env.DATABASE_URL, {
             // res.send('HELLO!')
             thingGroup.find().toArray()
                 .then(results => {
-                    res.render('index.ejs', { info: results }) //var in ejs is info
+                    res.render('index.ejs', { stuff: results }) //var in ejs is info
                 })
+            console.log('we sent a thing')
         })
-        app.post('/thing', (req,res)=>{
-            console.log('A thing was done!')
+
+        app.post('/addPic', (req,res)=>{
+            console.log('An image was added!')
             thingGroup.insertOne(req.body)
                 .then(result => {
                     // console.log(result)
                     res.redirect('/') //you don't want to reload persistently at /thing either - it resubs
                 })
         })
-        app.listen(process.env.PORT || 3000, ()=> {
-            console.log('Listening on 3000 or her port')
+
+        app.put('/update', (req,res)=>{
+            if (req.body.field === 'Title'){
+                thingGroup.updateOne({title: req.body.title}, {
+                    $set: {
+                        'title': req.body.edit 
+                    }
+                },{
+                    sort: {_id: -1}, //not sure this does anything for me - is it listing from most recent entry to oldest?
+                    upsert: false //don't add if doesn't exist
+                })
+                .then(result => {
+                    console.log('Updated a title')
+                    response.json('Updated a title')
+                })
+                .catch(error => console.error(error))
+            }else if (req.body.field === 'Image URL'){
+                thingGroup.updateOne({title: req.body.title}, {
+                    $set: {
+                        'imgURL': req.body.edit 
+                    }
+                },{
+                    sort: {_id: -1}, 
+                    upsert: false 
+                })
+                .then(result => {
+                    console.log('Updated img url')
+                    response.json('Updated img url')
+                })
+                .catch(error => console.error(error))
+            }else if (req.body.field === 'Caption'){
+                thingGroup.updateOne({title: req.body.title}, {
+                    $set: {
+                        'caption': req.body.edit 
+                    }
+                },{
+                    sort: {_id: -1}, 
+                    upsert: false 
+                })
+                .then(result => {
+                    console.log('Updated a caption')
+                    // response.json('Updated a caption')
+                })
+                .catch(error => console.error(error))
+            }else if (req.body.field === 'Video URL'){
+                thingGroup.updateOne({title: req.body.title}, {
+                    $set: {
+                        'vidURL': req.body.edit 
+                    }
+                },{
+                    sort: {_id: -1}, 
+                    upsert: false 
+                })
+                .then(result => {
+                    console.log('Updated a video')
+                    // response.json('Updated a caption')
+                })
+                .catch(error => console.error(error))
+            }else {
+                res.end() //can't do anything 
+            }
+            res.redirect('/') //refresh to show change
+        })
+
+        app.delete('/deletePic', (req,res)=>{
+            thingGroup.deleteOne({title:req.body.title})
+            .then(result => {
+                res.json('Bye forever')
+            })
+            .catch(err=> console.log(err))
+        })
+
+        app.listen(process.env.PORT || 3300, ()=> {
+            console.log('Listening on 3300 or her port')
         })
     })
     .catch(err => console.log(err))
