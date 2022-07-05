@@ -4,8 +4,7 @@ if (process.env.NODE_DEV !== 'production'){
     const dotenv = require('dotenv')
     dotenv.config({path: 'proc.env'}) //add env path
 }
-const { response } = require('express');
-const express = require('express')
+const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient
 
