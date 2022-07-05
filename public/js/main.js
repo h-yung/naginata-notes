@@ -39,6 +39,9 @@ async function updateEntry(){
     const edit = document.querySelector('input[name="edit"]').value
     const field = document.querySelector('#field').value
 
+    const urlType = document.querySelector('#video').value
+
+    console.log(`urlType should say if checked:${urlType}`)
     console.log(`title is ${titleChange}, the edit is for the ${field} and consists of ${edit}`)
     try{
         const response = await fetch('/update', {
@@ -47,7 +50,8 @@ async function updateEntry(){
             body: JSON.stringify({
                 'title': titleChange,
                 field,
-                edit
+                edit,
+                urlType
             })
         })
         document.querySelector('input[name="edit"]').value = ""

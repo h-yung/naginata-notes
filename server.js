@@ -58,20 +58,36 @@ MongoClient.connect(process.env.DATABASE_URL, {
                     response.json('Updated a title')
                 })
                 .catch(error => console.error(error))
-            }else if (req.body.field === 'Image URL'){
-                thingGroup.updateOne({title: req.body.title}, {
-                    $set: {
-                        'imgURL': req.body.edit 
-                    }
-                },{
-                    sort: {_id: -1}, 
-                    upsert: false 
-                })
-                .then(result => {
-                    console.log('Updated img url')
-                    response.json('Updated img url')
-                })
-                .catch(error => console.error(error))
+            }else if (req.body.field === 'Asset URL'){
+                if (req.body.urlType === 'video'){
+                    thingGroup.updateOne({title: req.body.title}, {
+                        $set: {
+                            'vidURL': req.body.edit,
+                        }
+                    },{
+                        sort: {_id: -1}, 
+                        upsert: false 
+                    })
+                    .then(result => {
+                        console.log('Updated vid url')
+                        response.json('Updated video url')
+                    })
+                    .catch(error => console.error(error))
+                } else {
+                    thingGroup.updateOne({title: req.body.title}, {
+                        $set: {
+                            'imgURL': req.body.edit,
+                        }
+                    },{
+                        sort: {_id: -1}, 
+                        upsert: false 
+                    })
+                    .then(result => {
+                        console.log('Updated img url')
+                        response.json('Updated img url')
+                    })
+                    .catch(error => console.error(error))
+                }
             }else if (req.body.field === 'Caption'){
                 thingGroup.updateOne({title: req.body.title}, {
                     $set: {
@@ -83,20 +99,6 @@ MongoClient.connect(process.env.DATABASE_URL, {
                 })
                 .then(result => {
                     console.log('Updated a caption')
-                    // response.json('Updated a caption')
-                })
-                .catch(error => console.error(error))
-            }else if (req.body.field === 'Video URL'){
-                thingGroup.updateOne({title: req.body.title}, {
-                    $set: {
-                        'vidURL': req.body.edit 
-                    }
-                },{
-                    sort: {_id: -1}, 
-                    upsert: false 
-                })
-                .then(result => {
-                    console.log('Updated a video')
                     // response.json('Updated a caption')
                 })
                 .catch(error => console.error(error))
