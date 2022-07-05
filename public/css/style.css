@@ -73,13 +73,13 @@ ul {
 button {
     padding: 0.5rem 1rem;
     border-radius: 0.2rem;
+    border: 1px solid hsl(225, 73%, 57%);
     background: hsl(225, 73%, 57%);
     color: white;
 }
 
 button:hover,
 button:active {
-    border: 1px solid hsl(225, 73%, 57%);
     background: white;
     color: hsl(225, 73%, 57%);
 }
