@@ -1,5 +1,5 @@
 # Naginata Notes
-A semi-personal notebook with practice notes that can be added, updated, or deleted. Displayed as note cards.
+A notebook to contain practice notes that can be added, updated, or deleted. Displayed as note cards.
 
 **Live**: https://naginata-notes.herokuapp.com/
 
