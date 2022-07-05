@@ -25,4 +25,3 @@ Once switched over to Heroku CLI and with git push heroku main, things started w
 
 ### Other quirks:
 - Must whitelist all IP addresses
-- still protect env variable (connection string) 
