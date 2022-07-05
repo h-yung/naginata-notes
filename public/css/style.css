@@ -36,6 +36,12 @@ figcaption {
     width: 20rem;
 }
 
+iframe {
+    width: 20rem;
+    height: auto;
+}
+
+
 body {
     padding: 1rem 2rem;
     justify-content: space-between;

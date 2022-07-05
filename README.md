@@ -1,4 +1,11 @@
 # heroku-dbtest
+
+## Currently
+CRUD app with ejs
+Naginata-focused
+launching to test video embeds. Youtube allows only https pages to stream with embeds/iframes so need to launch out of local host.
+
+## Previously
 "It's a page".
 The skeletal structure of a to-do list that you can't update aside from adding more. Such is life.
 

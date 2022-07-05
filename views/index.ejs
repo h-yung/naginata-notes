@@ -17,7 +17,10 @@
                 <li>
                     <h3><%= stuff[i].title %></h3>
                     <img src="<%= stuff[i].imgURL %>" alt="<%=stuff.caption%>"> <!--do I need closing /?-->
-                    <iframe class="hidden" width="20rem" height="auto" src="<%= stuff[i].vidURL %>"></iframe>
+                    <!-- <span>Video URL: </span><span><%= stuff[i].vidURL %></span> -->
+                    <iframe class="" src="<%= stuff[i].vidURL %>"></iframe>
+
+                    <!-- <iframe class="hidden" width="20rem" height="auto" src="<%= stuff[i].vidURL %>"></iframe> -->
                     <figcaption><%= stuff[i].caption %></figcaption>
                 </li>
                 <% }%>
@@ -28,7 +31,7 @@
             <form action="/addPic" method="POST">
                 <input type="text" placeholder="Enter title" name="title">
                 <input type="text" placeholder="img url" name="imgURL">
-                <!-- <input type="text" placeholder="video url" name="vidURL"> -->
+                <input type="text" placeholder="video url" name="vidURL">
                 <input type="text" placeholder="caption" name="caption">
                 <button type="submit">Submit</button>
             </form>
@@ -40,11 +43,12 @@
                 <select id="field" name="field">
                     <option value="Choose field" selected>Choose field</option>
                     <option value="Title">Title</option>
-                    <option value="Image URL">Image URL</option>
+                    <option value="Asset URL">Asset URL</option>
                     <!-- <option value="Video URL">Video URL</option> -->
                     <option value="Caption">Caption</option>
                 </select>
                 <input type="text" placeholder="New input" name="edit">
+                <label for="video">If URL, is it a video?<input type="checkbox" id="video" name="video" value='video'></label>
                 <button data-action="update">Update this entry</button>
             </section>
             <h2>Delete an entry</h2>
