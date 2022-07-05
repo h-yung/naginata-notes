@@ -1,6 +1,8 @@
 # Naginata Notes
 A notebook to contain practice notes that can be added, updated, or deleted. Displayed as note cards.
 
+**Tech used**: CSS, JavaScript, Node.js, Express, MongoDB, some EJS.
+
 **Live**: https://naginata-notes.herokuapp.com/
 
 ![screenshot of notebook](https://i.postimg.cc/bvhCsZkF/heroku-db-naginata.png)
