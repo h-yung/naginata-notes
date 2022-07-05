@@ -2,8 +2,10 @@
 
 ## Currently
 CRUD app with ejs
-Naginata-focused
-launching to test video embeds. Youtube allows only https pages to stream with embeds/iframes so need to launch out of local host.
+Naginata-focused.
+Launched to test video embeds. Youtube allows only https pages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. 
+
+The value of a checkbox input is whatever you set as its value in the input attribute. This value is actualized only when the checkbox is checked.
 
 ## Previously
 "It's a page".

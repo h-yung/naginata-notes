@@ -1,13 +1,16 @@
-
 let homepageTitle = document.querySelector('h1')
-homepageTitle.addEventListener('click', turnRed)
+homepageTitle.addEventListener('click', turnGold)
 
-function turnRed(){
+function turnGold(){
     document.querySelectorAll('button').forEach(button => button.style.backgroundColor = "gold")
 }
 
-function hideEmpty(){
-    document.querySelectorAll('iframe')
+const doSomethings = document.querySelectorAll('button[data-action="do-something"]')
+doSomethings.forEach(button => button.addEventListener('click', e => showForms(e)))
+
+function showForms(event){
+    // document.querySelector('.data-updates').classList.toggle('hidden')
+    document.querySelector(`[data-action-type=${event.target.value}]`).classList.toggle('hidden')
 }
 
 let deleteButton = document.querySelector('button[data-action="delete"]')
@@ -15,12 +18,14 @@ deleteButton.addEventListener('click', deleteThat)
 
 async function deleteThat(){
     try{
+        const passcode = prompt('Provide passcode:', '')
         const titleBye = document.querySelector('input[name="titleBye"]').value
         const response = await fetch('/deletePic', {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-               'title': titleBye
+               'title': titleBye,
+               passcode
             })
         })
         const data = await response.json()
@@ -31,18 +36,27 @@ async function deleteThat(){
     }
 }
 
+const urlTypeCheck = document.querySelector('label[data-type="asset-label"]')
+const fieldInput = document.querySelector('#field')
+fieldInput.addEventListener('change', showTypeOption)
+
+function showTypeOption(){
+    if (fieldInput.value === 'Asset URL'){
+        urlTypeCheck.classList.remove('hidden')
+        console.log('typechecked')
+    }
+}
+
 let updateButton = document.querySelector('button[data-action="update"]')
 updateButton.addEventListener('click', updateEntry)
 
 async function updateEntry(){
+    const passcode = prompt('Provide passcode:', '')
     const titleChange = document.querySelector('input[name="titleChange"]').value
     const edit = document.querySelector('input[name="edit"]').value
     const field = document.querySelector('#field').value
-
     const urlType = document.querySelector('#video').value
-
-    console.log(`urlType should say if checked:${urlType}`)
-    console.log(`title is ${titleChange}, the edit is for the ${field} and consists of ${edit}`)
+    // console.log(`title is ${titleChange}, the edit is for the ${field} and consists of ${edit}`)
     try{
         const response = await fetch('/update', {
             method: 'put',
@@ -51,7 +65,8 @@ async function updateEntry(){
                 'title': titleChange,
                 field,
                 edit,
-                urlType
+                urlType,
+                passcode
             })
         })
         document.querySelector('input[name="edit"]').value = ""

@@ -35,85 +35,99 @@ MongoClient.connect(process.env.DATABASE_URL, {
         })
 
         app.post('/addPic', (req,res)=>{
-            console.log('An image was added!')
-            thingGroup.insertOne(req.body)
+            if (req.body.passcode === '2554'){
+                thingGroup.insertOne(req.body)
                 .then(result => {
                     // console.log(result)
                     res.redirect('/') //you don't want to reload persistently at /thing either - it resubs
                 })
+            }else {
+                res.json('Passcode incorrect.')
+            }
+            
         })
 
         app.put('/update', (req,res)=>{
-            if (req.body.field === 'Title'){
-                thingGroup.updateOne({title: req.body.title}, {
-                    $set: {
-                        'title': req.body.edit 
+            if (req.body.passcode === '2554'){
+                if (req.body.field === 'Title'){
+                    thingGroup.updateOne({title: req.body.title}, {
+                        $set: {
+                            'title': req.body.edit 
+                        }
+                    },{
+                        sort: {_id: -1}, //not sure this does anything for me - is it listing from most recent entry to oldest?
+                        upsert: false //don't add if doesn't exist
+                    })
+                    .then(result => {
+                        console.log('Updated a title')
+                        res.json('Updated a title')
+                    })
+                    .catch(error => console.error(error))
+                }else if (req.body.field === 'Asset URL'){
+                    if (req.body.urlType === 'video'){
+                        thingGroup.updateOne({title: req.body.title}, {
+                            $set: {
+                                'vidURL': req.body.edit,
+                            }
+                        },{
+                            sort: {_id: -1}, 
+                            upsert: false 
+                        })
+                        .then(result => {
+                            console.log('Updated vid url')
+                            res.json('Updated video url')
+                        })
+                        .catch(error => console.error(error))
+                    } else {
+                        thingGroup.updateOne({title: req.body.title}, {
+                            $set: {
+                                'imgURL': req.body.edit,
+                            }
+                        },{
+                            sort: {_id: -1}, 
+                            upsert: false 
+                        })
+                        .then(result => {
+                            console.log('Updated img url')
+                            res.json('Updated img url')
+                        })
+                        .catch(error => console.error(error))
                     }
-                },{
-                    sort: {_id: -1}, //not sure this does anything for me - is it listing from most recent entry to oldest?
-                    upsert: false //don't add if doesn't exist
-                })
-                .then(result => {
-                    console.log('Updated a title')
-                    response.json('Updated a title')
-                })
-                .catch(error => console.error(error))
-            }else if (req.body.field === 'Asset URL'){
-                if (req.body.urlType === 'video'){
+                }else if (req.body.field === 'Caption'){
                     thingGroup.updateOne({title: req.body.title}, {
                         $set: {
-                            'vidURL': req.body.edit,
+                            'caption': req.body.edit 
                         }
                     },{
                         sort: {_id: -1}, 
                         upsert: false 
                     })
                     .then(result => {
-                        console.log('Updated vid url')
-                        response.json('Updated video url')
+                        console.log('Updated a caption')
+                        // response.json('Updated a caption')
                     })
                     .catch(error => console.error(error))
-                } else {
-                    thingGroup.updateOne({title: req.body.title}, {
-                        $set: {
-                            'imgURL': req.body.edit,
-                        }
-                    },{
-                        sort: {_id: -1}, 
-                        upsert: false 
-                    })
-                    .then(result => {
-                        console.log('Updated img url')
-                        response.json('Updated img url')
-                    })
-                    .catch(error => console.error(error))
+                }else {
+                    res.end() //can't do anything 
                 }
-            }else if (req.body.field === 'Caption'){
-                thingGroup.updateOne({title: req.body.title}, {
-                    $set: {
-                        'caption': req.body.edit 
-                    }
-                },{
-                    sort: {_id: -1}, 
-                    upsert: false 
-                })
-                .then(result => {
-                    console.log('Updated a caption')
-                    // response.json('Updated a caption')
-                })
-                .catch(error => console.error(error))
+                res.redirect('/') //refresh to show change
             }else {
-                res.end() //can't do anything 
+                res.json('Passcode incorrect.')
+                // res.end() //don't do anything if not valid
             }
-            res.redirect('/') //refresh to show change
         })
 
         app.delete('/deletePic', (req,res)=>{
-            thingGroup.deleteOne({title:req.body.title})
-            .then(result => {
-                res.json('Bye forever')
-            })
-            .catch(err=> console.log(err))
+            if (req.body.passcode === '2554'){
+                thingGroup.deleteOne({title:req.body.title})
+                .then(result => {
+                    res.json('Bye forever')
+                })
+                .catch(err=> console.log(err))
+            }else {
+                res.json('Passcode incorrect.')
+                // res.end() //don't do anything if not valid
+            }
         })
 
         app.listen(process.env.PORT || 3300, ()=> {
