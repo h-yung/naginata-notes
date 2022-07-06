@@ -41,7 +41,7 @@
                     <option value="Caption">Caption</option>
                 </select>
                 <input type="text" placeholder="New input" name="edit">
-                <label class='hidden' data-type="asset-label" for="video">If URL, is it a video?<input type="checkbox" id="video" name="video" value='video'></label>
+                <label class='hidden' data-type="asset-label" for="video">If URL, is it something other than an image?<input type="checkbox" id="video" name="video" value='video'></label>
                 <button data-action="update">Update this entry</button>
             </section>
             <section data-action-type="delete" class="hidden delete-things">
@@ -59,7 +59,7 @@
                     <img src="<%= stuff[i].imgURL %>" alt="<%=stuff.caption%>"> <!--do I need closing /?-->
 
                     <% if (stuff[i].vidURL !== '' && stuff[i].vidURL !== undefined) { %>
-                        <a data-type="vid" href="<%= stuff[i].vidURL %>" target=_blank ><span>Video URL</span></a>
+                        <a data-type="vid" href="<%= stuff[i].vidURL %>" target=_blank ><span>Source URL</span></a>
                     <% }%>
                     <!-- <iframe class="hidden" width="20rem" height="auto" src="<%= stuff[i].vidURL %>"></iframe> -->
                     <figcaption><%= stuff[i].caption %></figcaption>
