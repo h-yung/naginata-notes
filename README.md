@@ -1,5 +1,7 @@
 # Naginata Notes
-A semi-personal notebook with practice notes that can be added, updated, or deleted. Displayed as note cards.
+A notebook to contain practice notes that can be added, updated, or deleted. Displayed as note cards.
+
+**Tech used**: CSS, JavaScript, Node.js, Express, MongoDB, some EJS.
 
 **Live**: https://naginata-notes.herokuapp.com/
 
@@ -25,4 +27,3 @@ Once switched over to Heroku CLI and with git push heroku main, things started w
 
 ### Other quirks:
 - Must whitelist all IP addresses
-- still protect env variable (connection string) 
