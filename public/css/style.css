@@ -82,6 +82,7 @@ button:hover,
 button:active {
     background: white;
     color: hsl(225, 73%, 57%);
+    cursor: pointer;
 }
 
 .results {
