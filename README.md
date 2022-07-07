@@ -16,6 +16,7 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 
 ## Current state
 Naginata-focused CRUD app with ejs
+
 Video: Youtube allows only httpspages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. So, sadly, videos are all just links for now. 
 
 ### Minor reminders
