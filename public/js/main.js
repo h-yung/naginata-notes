@@ -9,8 +9,7 @@ const doSomethings = document.querySelectorAll('button[data-action="do-something
 doSomethings.forEach(button => button.addEventListener('click', e => showForms(e)))
 
 function showForms(event){
-    // document.querySelector('.data-updates').classList.toggle('hidden')
-    document.querySelector(`[data-action-type=${event.target.value}]`).classList.toggle('hidden')
+    document.querySelectorAll('[data-action-type]').forEach(elem => elem.dataset.actionType === event.target.value ? elem.classList.toggle('hidden') : elem.classList.add('hidden'))
 }
 
 let deleteButton = document.querySelector('button[data-action="delete"]')
