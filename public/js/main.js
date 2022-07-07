@@ -42,7 +42,8 @@ fieldInput.addEventListener('change', showTypeOption)
 function showTypeOption(){
     if (fieldInput.value === 'Asset URL'){
         urlTypeCheck.classList.remove('hidden')
-        console.log('typechecked')
+    }else {
+        urlTypeCheck.classList.add('hidden')
     }
 }
 

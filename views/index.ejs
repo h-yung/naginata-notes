@@ -37,7 +37,6 @@
                     <option value="Choose field" selected>Choose field</option>
                     <option value="Title">Title</option>
                     <option value="Asset URL">Asset URL</option>
-                    <!-- <option value="Video URL">Video URL</option> -->
                     <option value="Caption">Caption</option>
                 </select>
                 <input type="text" placeholder="New input" name="edit">
@@ -52,16 +51,14 @@
         </section>
 
         <section class="results">
-            <!-- <ul class="wrapper"> -->
                 <% for (let i=0; i<stuff.length; i++) { %>
                 <div>
                     <h3><%= stuff[i].title %></h3>
-                    <img src="<%= stuff[i].imgURL %>" alt="<%=stuff.caption%>"> <!--do I need closing /?-->
+                    <img src="<%= stuff[i].imgURL %>" alt="<%=stuff.caption%>"> 
 
                     <% if (stuff[i].vidURL !== '' && stuff[i].vidURL !== undefined) { %>
                         <a data-type="vid" href="<%= stuff[i].vidURL %>" target=_blank ><span>Source URL</span></a>
                     <% }%>
-                    <!-- <iframe class="hidden" width="20rem" height="auto" src="<%= stuff[i].vidURL %>"></iframe> -->
                     <figcaption><%= stuff[i].caption %></figcaption>
                 </div>
                 <% }%>
