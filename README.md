@@ -7,12 +7,15 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 
 ![screenshot of notebook](https://i.postimg.cc/bvhCsZkF/heroku-db-naginata.png)
 
+**Bugs**:
+- When an img url exists on file/in the document, for some reason, not checking the "is this a non-img link" still assigns the asset link to "vidURL" rather than updating the image.
+
 **Optimizations and next steps**: 
 - Make searchable by title fragment, autocomplete.
 - Try autodeployment setup.
 - Should probably retitle this web app.
 
-**Priorty level**: Low, as I'm focusing on React for next few works.
+**Priorty level**: Low, as I'm focusing on React for next few works. However, bug fix may get prioritized.
 
 ## Current state
 Naginata-focused CRUD app with ejs
