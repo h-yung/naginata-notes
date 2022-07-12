@@ -7,25 +7,24 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 
 ![screenshot of notebook](https://i.postimg.cc/bvhCsZkF/heroku-db-naginata.png)
 
-**Bugs**:
-- When an img url exists on file/in the document, for some reason, not checking the "is this a non-img link" still assigns the asset link to "vidURL" rather than updating the image.
-**Latest updates**:
-- Tags can now be added as array elements if comma+1 space separated, in preparation for search/filter functionality. EJS not really formatted to display tags with more spacing.
+## Current state
+Naginata-focused CRUD app with ejs
+- Tags can now be added as array elements if comma+1 space separated, in preparation for search/filter functionality.
 - Scroll to top added on click of main nav title ("Naginata").
+- **Bug**: When an img url exists on file/in the document, for some reason, not checking the "is this a non-img link" still assigns the asset link to "vidURL" rather than updating the image.
+- Video: Youtube allows only httpspages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. So, sadly, videos are all just links for now. 
 
 **Optimizations**: 
-- Make searchable by title fragment, autocomplete.
+- **[IN PROGRESS]** Make searchable by tag. 
+- Searchable by title fragment, autocomplete.
 - Try autodeployment setup.
 - Should probably retitle this web app.
+- Update stack (apparently current heroku stack is now behind).
 
 **Priorty level**: Low, as I'm focusing on React for next few works. However, bug fix may get prioritized.
 
-## Current state
-Naginata-focused CRUD app with ejs
-
-Video: Youtube allows only httpspages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. So, sadly, videos are all just links for now. 
-
-### Minor reminders
+### Learnings
+Working with arrays as values for document keys in MongoDB: although there's dot notation in use and superficial similarity (e.g., .find()) parameters and syntax can be very different. Need a refresher on operators. May attempt with the Travel app built using React.
 The value of a checkbox input is whatever you set as its value in the input attribute. This value is actualized only when the checkbox is checked.
 
 ## Previous states
