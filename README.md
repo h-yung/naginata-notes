@@ -9,10 +9,11 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 
 **Bugs**:
 - When an img url exists on file/in the document, for some reason, not checking the "is this a non-img link" still assigns the asset link to "vidURL" rather than updating the image.
-**Current**:
-- Tags adding as arrays but not separated by word. EJS not yet updated to display tags properly (even though they show up on localhost).
+**Latest updates**:
+- Tags can now be added as array elements if comma+1 space separated, in preparation for search/filter functionality. EJS not really formatted to display tags with more spacing.
+- Scroll to top added on click of main nav title ("Naginata").
 
-**Optimizations and next steps**: 
+**Optimizations**: 
 - Make searchable by title fragment, autocomplete.
 - Try autodeployment setup.
 - Should probably retitle this web app.
