@@ -18,6 +18,16 @@
         </ul>
     </nav>
     <section class="wrapper">
+
+        <!-- testing -->
+        <section class="filterlist">  
+            <form data-action-type="filter" action="/find" method="GET"><!--eventually add class hidden, aria labels to inputs-->
+                <input type="text" placeholder="Search by tag" name="searchBy">
+                <button>Find</button>
+            </form>
+        </section>
+        <!-- testing -->
+
         <section class="data-updates">
             <form data-action-type="add" class="hidden" action="/addPic" method="POST">
                 <h3>Add entry</h3>
