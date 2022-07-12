@@ -62,7 +62,7 @@
                         <a data-type="vid" href="<%= stuff[i].vidURL %>" target=_blank ><span>Source URL</span></a>
                     <% }%>
                     <figcaption><%= stuff[i].caption %></figcaption>
-                    <span class="current-tags"><%= stuff[i].tags %></span>
+                    <span class="current-tags"><%= stuff[i].tags.join(', ') %></span>
                 </div>
                 <% }%>
         </section>
