@@ -8,7 +8,8 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 ![screenshot of notebook](https://i.postimg.cc/bvhCsZkF/heroku-db-naginata.png)
 
 **Optimizations**: 
-- Make searchable by title fragment, autocomplete.
+- **[IN PROGRESS]** Make searchable by tag. 
+- Searchable by title fragment, autocomplete.
 - Try autodeployment setup.
 - Should probably retitle this web app.
 
