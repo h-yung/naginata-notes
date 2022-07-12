@@ -96,6 +96,11 @@ button:active {
     /* overflow-y:scroll; */
 }
 
+.current-tags {
+    font: italic 0.7rem sans-serif;
+    margin: 1em 0;
+}
+
 div {
     margin: 1rem;
     padding: 1rem 1.5rem;

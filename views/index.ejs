@@ -26,6 +26,7 @@
                 <input type="text" placeholder="Add img url" name="imgURL">
                 <input type="text" placeholder="Non-image source url" name="vidURL">
                 <input type="text" placeholder="caption" name="caption">
+                <input type="text" placeholder="Add ', '-separated tags" name="tags">
                 <button type="submit">Submit</button>
             </form>
             <section data-action-type="update" class="hidden wrapper update">
@@ -38,6 +39,7 @@
                     <option value="Title">Title</option>
                     <option value="Asset URL">Asset URL</option>
                     <option value="Caption">Caption</option>
+                    <option value="Tags">Tags</option>
                 </select>
                 <input type="text" placeholder="New input" name="edit">
                 <label class='hidden' data-type="asset-label" for="video">If URL, is it something other than an image?<input type="checkbox" id="video" name="video" value='video'></label>
@@ -60,9 +62,9 @@
                         <a data-type="vid" href="<%= stuff[i].vidURL %>" target=_blank ><span>Source URL</span></a>
                     <% }%>
                     <figcaption><%= stuff[i].caption %></figcaption>
+                    <span class="current-tags"><%= stuff[i].tags %></span>
                 </div>
                 <% }%>
-            </ul>
         </section>
         
     </section>

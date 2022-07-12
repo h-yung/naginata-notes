@@ -56,6 +56,7 @@ async function updateEntry(){
     const edit = document.querySelector('input[name="edit"]').value
     const field = document.querySelector('#field').value
     const urlType = document.querySelector('#video').value
+    console.log(`urlType is ${urlType}`)
     // console.log(`title is ${titleChange}, the edit is for the ${field} and consists of ${edit}`)
     try{
         const response = await fetch('/update', {
