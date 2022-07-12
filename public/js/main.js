@@ -1,17 +1,20 @@
-let homepageTitle = document.querySelector('h1')
-homepageTitle.addEventListener('click', turnGold)
-
-function turnGold(){
-    document.querySelectorAll('button').forEach(button => button.style.backgroundColor = "gold")
-}
-
 const doSomethings = document.querySelectorAll('button[data-action="do-something"]')
 doSomethings.forEach(button => button.addEventListener('click', e => showForms(e)))
 
+// go to top
+const backToTop = document.querySelector('[data-action="goTop"]')
+backToTop.addEventListener('click', scrollToTop)
+function scrollToTop() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
+
+// show only the relevant form
 function showForms(event){
     document.querySelectorAll('[data-action-type]').forEach(elem => elem.dataset.actionType === event.target.value ? elem.classList.toggle('hidden') : elem.classList.add('hidden'))
 }
 
+// delete req
 let deleteButton = document.querySelector('button[data-action="delete"]')
 deleteButton.addEventListener('click', deleteThat)
 
@@ -35,6 +38,7 @@ async function deleteThat(){
     }
 }
 
+// conditional check on asset link type
 const urlTypeCheck = document.querySelector('label[data-type="asset-label"]')
 const fieldInput = document.querySelector('#field')
 fieldInput.addEventListener('change', showTypeOption)
@@ -47,6 +51,7 @@ function showTypeOption(){
     }
 }
 
+// update/put req
 let updateButton = document.querySelector('button[data-action="update"]')
 updateButton.addEventListener('click', updateEntry)
 
@@ -56,7 +61,6 @@ async function updateEntry(){
     const edit = document.querySelector('input[name="edit"]').value
     const field = document.querySelector('#field').value
     const urlType = document.querySelector('#video').value
-    console.log(`urlType is ${urlType}`)
     // console.log(`title is ${titleChange}, the edit is for the ${field} and consists of ${edit}`)
     try{
         const response = await fetch('/update', {
