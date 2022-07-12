@@ -35,13 +35,13 @@ MongoClient.connect(process.env.DATABASE_URL, {
 
         app.post('/addPic', (req,res)=>{
             if (req.body.passcode === '2554'){
-                const newTags = req.body.tags.split(', ')
+                // const newTags = req.body.tags
                 thingGroup.insertOne({
                     title: req.body.title,
                     imgURL: req.body.imgURL,
                     vidURL: req.body.vidURL,
                     caption: req.body.caption,
-                    tags: [...newTags]
+                    tags: req.body.tags
                 })
                 .then(result => {
                     // console.log(result)
@@ -70,8 +70,9 @@ MongoClient.connect(process.env.DATABASE_URL, {
                     })
                     .catch(error => console.error(error))
                 }else if (req.body.field === 'Tags'){
+                    const newTags = req.body.edit.split(', ')
                     thingGroup.updateOne({title: req.body.title}, {
-                        $push: { 'tags': req.body.edit }
+                        $addToSet: { 'tags': [...req.body.edit] }
                     },{
                         sort: {_id: -1}, //not sure this does anything for me - is it listing from most recent entry to oldest?
                         upsert: false //don't add if doesn't exist based on title spec
