@@ -9,6 +9,8 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 
 **Bugs**:
 - When an img url exists on file/in the document, for some reason, not checking the "is this a non-img link" still assigns the asset link to "vidURL" rather than updating the image.
+**Current**:
+- Tags adding as arrays but not separated by word. EJS not yet updated to display tags properly (even though they show up on localhost).
 
 **Optimizations and next steps**: 
 - Make searchable by title fragment, autocomplete.
