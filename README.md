@@ -22,7 +22,7 @@ Naginata-focused CRUD app with ejs
 - Video: Youtube allows only httpspages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. So, sadly, videos are all just links for now. 
 
 ### Learnings
-Working with arrays as values for document keys in MongoDB - need a refresher on operators but it's helpful here to append. May attempt with the Travel app built using React.
+Working with arrays as values for document keys in MongoDB: although there's dot notation in use and superficial similarity (e.g., .find()) parameters and syntax can be very different. Need a refresher on operators. May attempt with the Travel app built using React.
 The value of a checkbox input is whatever you set as its value in the input attribute. This value is actualized only when the checkbox is checked.
 
 ## Previous states
