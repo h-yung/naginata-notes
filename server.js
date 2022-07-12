@@ -35,7 +35,14 @@ MongoClient.connect(process.env.DATABASE_URL, {
 
         app.post('/addPic', (req,res)=>{
             if (req.body.passcode === '2554'){
-                thingGroup.insertOne(req.body)
+                const newTags = req.body.tags.split(', ')
+                thingGroup.insertOne({
+                    title: req.body.title,
+                    imgURL: req.body.imgURL,
+                    vidURL: req.body.vidURL,
+                    caption: req.body.caption,
+                    tags: [...newTags]
+                })
                 .then(result => {
                     // console.log(result)
                     res.redirect('/') //you don't want to reload persistently at /thing either - it resubs
@@ -51,11 +58,23 @@ MongoClient.connect(process.env.DATABASE_URL, {
                 if (req.body.field === 'Title'){
                     thingGroup.updateOne({title: req.body.title}, {
                         $set: {
-                            'title': req.body.edit 
+                            'title': req.body.edit
                         }
                     },{
                         sort: {_id: -1}, //not sure this does anything for me - is it listing from most recent entry to oldest?
                         upsert: false //don't add if doesn't exist
+                    })
+                    .then(result => {
+                        console.log('Updated a title')
+                        res.json('Updated a title')
+                    })
+                    .catch(error => console.error(error))
+                }else if (req.body.field === 'Tags'){
+                    thingGroup.updateOne({title: req.body.title}, {
+                        $push: { 'tags': req.body.edit }
+                    },{
+                        sort: {_id: -1}, //not sure this does anything for me - is it listing from most recent entry to oldest?
+                        upsert: false //don't add if doesn't exist based on title spec
                     })
                     .then(result => {
                         console.log('Updated a title')
