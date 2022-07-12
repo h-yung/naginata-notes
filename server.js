@@ -34,7 +34,7 @@ MongoClient.connect(process.env.DATABASE_URL, {
         })
 
         app.post('/addPic', (req,res)=>{
-            if (req.body.passcode === '2554'){
+            if (req.body.passcode === process.env.PASSCODE){
                 const newTags = req.body.tags.split(', ')
                 thingGroup.insertOne({
                     title: req.body.title,
@@ -54,7 +54,7 @@ MongoClient.connect(process.env.DATABASE_URL, {
         })
 
         app.put('/update', (req,res)=>{
-            if (req.body.passcode === '2554'){
+            if (req.body.passcode === process.env.PASSCODE){
                 if (req.body.field === 'Title'){
                     thingGroup.updateOne({title: req.body.title}, {
                         $set: {
@@ -137,7 +137,7 @@ MongoClient.connect(process.env.DATABASE_URL, {
         })
 
         app.delete('/deletePic', (req,res)=>{
-            if (req.body.passcode === '2554'){
+            if (req.body.passcode === process.env.PASSCODE){
                 thingGroup.deleteOne({title:req.body.title})
                 .then(result => {
                     res.json('Bye forever')
