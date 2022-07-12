@@ -12,6 +12,7 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 - Searchable by title fragment, autocomplete.
 - Try autodeployment setup.
 - Should probably retitle this web app.
+- Update stack (apparently current heroku stack is now behind).
 
 **Priorty level**: Low, as I'm focusing on React for next few works. However, bug fix may get prioritized.
 
