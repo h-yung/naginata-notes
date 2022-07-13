@@ -24,8 +24,8 @@ Naginata-focused CRUD app with ejs
 **Priorty level**: Low, as I'm focusing on React for next few works. However, bug fix may get prioritized.
 
 ### Learnings
-Working with arrays as values for document keys in MongoDB: although there's dot notation in use and superficial similarity (e.g., .find()) parameters and syntax can be very different. Need a refresher on operators. May attempt with the Travel app built using React.
-The value of a checkbox input is whatever you set as its value in the input attribute. This value is actualized only when the checkbox is checked.
+- Working with arrays as values for document keys in MongoDB: although there's dot notation in use and superficial similarity (e.g., .find()) parameters and syntax can be very different. Need a refresher on operators. May attempt with the Travel app built using React.
+- The value of a checkbox input is whatever you set as its value in the input attribute. This value is actualized only when the checkbox is checked.
 
 ## Previous states
 "It's a page". The skeletal structure of a to-do list that you can't update aside from adding more. I used this to test what went wrong with deployment using autodeploy from Github. Current/successful deployment is using Heroku CLI. My understanding of autodeploy is that pushing to the repo was also pushing to Heroku (and in both cases pushing to main branch).
