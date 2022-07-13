@@ -16,6 +16,7 @@ Naginata-focused CRUD app with ejs
 
 **Optimizations**: 
 - **[IN PROGRESS]** Make searchable by tag. 
+- Move update and delete buttons into each notecard.
 - Searchable by title fragment, autocomplete.
 - Try autodeployment setup.
 - Should probably retitle this web app.
