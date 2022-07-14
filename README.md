@@ -16,7 +16,7 @@ Naginata-focused CRUD app with ejs
 
 **Optimizations**: 
 - **[IN PROGRESS]** Make searchable by tag. 
-- Move update and delete buttons into each notecard.
+- Move update and delete buttons into each notecard. 
 - Searchable by title fragment, autocomplete.
 - Try autodeployment setup.
 - Should probably retitle this web app.
@@ -27,6 +27,7 @@ Naginata-focused CRUD app with ejs
 ### Learnings
 - Working with arrays as values for document keys in MongoDB: although there's dot notation in use and superficial similarity (e.g., .find()) parameters and syntax can be very different. Need a refresher on operators. May attempt with the Travel app built using React.
 - The value of a checkbox input is whatever you set as its value in the input attribute. This value is actualized only when the checkbox is checked.
+- Debugged issue: Moving delete button to entries: Getting title text must be done through `textContent` rather than `innerText` since the current styles applied to the text prevents a match from being found in the db. Also, keep track of what each button is actually doing (the delete button of the form vs. the delete button in the nav that showed the form)...
 
 ## Previous states
 "It's a page". The skeletal structure of a to-do list that you can't update aside from adding more. I used this to test what went wrong with deployment using autodeploy from Github. Current/successful deployment is using Heroku CLI. My understanding of autodeploy is that pushing to the repo was also pushing to Heroku (and in both cases pushing to main branch).
