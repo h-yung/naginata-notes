@@ -15,13 +15,13 @@ function showForms(event){
 }
 
 // delete req
-let deleteButton = document.querySelector('button[data-action="delete"]')
-deleteButton.addEventListener('click', deleteThat)
+let deleteButtons = document.querySelectorAll('button[data-action="delete"]')
+deleteButtons.forEach(button => button.addEventListener('click', e=> deleteThat(e)))
 
-async function deleteThat(){
+async function deleteThat(e){
     try{
-        const passcode = prompt('Provide passcode:', '')
-        const titleBye = document.querySelector('input[name="titleBye"]').value
+        const titleBye = e.target.parentElement.querySelector('h3').textContent
+        const passcode = prompt(`Are you sure you want to delete ${titleBye}? Provide passcode:`, '')
         const response = await fetch('/deletePic', {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
@@ -31,7 +31,6 @@ async function deleteThat(){
             })
         })
         const data = await response.json()
-        console.log(`bye ${titleBye}`)
         location.reload()
     }catch(err){
         console.log(err)

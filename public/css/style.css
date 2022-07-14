@@ -119,6 +119,10 @@ div:hover {
     box-shadow:0.5rem 0.5rem 1rem hsla(225, 73%, 57%, 0.171);
 }
 
+div button {
+    margin-bottom: 1em;
+}
+
 .data-updates {
     display: flex;
     flex-direction: column;

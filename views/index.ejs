@@ -14,7 +14,7 @@
         <ul>
             <li><button data-action="do-something" value="add">Add</button></li>
             <li><button data-action="do-something" value="update">Update</button></li>
-            <li><button data-action="do-something" value="delete">Delete</button></li>
+            <!-- <li><button data-action="do-something" value="delete">Delete</button></li> -->
         </ul>
     </nav>
     <section class="wrapper">
@@ -45,11 +45,11 @@
                 <label class='hidden' data-type="asset-label" for="video">If URL, is it something other than an image?<input type="checkbox" id="video" name="video" value='video'></label>
                 <button data-action="update">Update this entry</button>
             </section>
-            <section data-action-type="delete" class="hidden delete-things">
+            <!-- <section data-action-type="delete" class="hidden delete-things">
                 <h3>Delete an entry</h3>
                 <input type="text" placeholder="Title to delete" name="titleBye">
                 <button data-action="delete">Delete this entry</button>
-            </section>
+            </section> -->
         </section>
 
         <section class="results">
@@ -63,6 +63,7 @@
                     <% }%>
                     <figcaption><%= stuff[i].caption %></figcaption>
                     <span class="current-tags"><%= stuff[i].tags.join(', ') %></span>
+                    <button data-action="delete" value="delete">Delete</button>
                 </div>
                 <% }%>
         </section>
