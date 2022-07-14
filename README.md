@@ -4,6 +4,7 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 **Tech used**: CSS, JavaScript, Node.js, Express, MongoDB, some EJS.
 
 **Live**: https://naginata-notes.herokuapp.com/
+
 ![heroku-db-naginata_v2](https://user-images.githubusercontent.com/102257735/179071686-f38e16f3-67f3-47bb-b964-63527430a348.png)
 
 ## Current state
