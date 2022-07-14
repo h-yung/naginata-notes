@@ -46,29 +46,3 @@ Once switched over to Heroku CLI and with git push heroku main, things started w
 
 ### Other quirks:
 - Must whitelist all IP addresses
-
-
-<!-- build as react app -->
-nav bar note
-export default function App() {
-  return (
-    <Router>
-      <Navbar />
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
-    </Router>
-  );
-}
-
-function Navbar() {
-  // visible on every page
-  return <>navbar</>
-}
-
-function Home() {
-  return <>home</>;
-}
-
-function About() {
-  return <>about</>;
-}
