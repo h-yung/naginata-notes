@@ -11,6 +11,7 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 Naginata-focused CRUD app with ejs
 - Tags can now be added as array elements if comma+1 space separated, in preparation for search/filter functionality.
 - Scroll to top added on click of main nav title ("Naginata").
+- Update and delete buttons are moved into each notecard. Update still triggers a form at top with auto scroll to top.
 - Video: Youtube allows only httpspages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. So, sadly, videos are all just links for now. 
 - Might be abusing data attributes a bit. Some cleanup is warranted in the future.
 
@@ -20,7 +21,6 @@ Naginata-focused CRUD app with ejs
 
 **Optimizations**: 
 - **[IN PROGRESS]** Make searchable by tag. 
-- Move update and delete buttons into each notecard. 
 - Searchable by title fragment, autocomplete.
 - Try autodeployment setup.
 - Should probably retitle this web app.
