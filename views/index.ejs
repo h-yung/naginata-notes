@@ -13,8 +13,6 @@
         <h2>Unsorted notes</h2>
         <ul>
             <li><button data-action="do-something" value="add">Add</button></li>
-            <li><button data-action="do-something" value="update">Update</button></li>
-            <!-- <li><button data-action="do-something" value="delete">Delete</button></li> -->
         </ul>
     </nav>
     <section class="wrapper">
@@ -31,8 +29,8 @@
             </form>
             <section data-action-type="update" class="hidden wrapper update">
                 <h3>Update an entry</h3>
-                <p>You can only update one field at a time. Select by exact title match.</p>
-                <input type="text" placeholder="Title to update" name="titleChange">
+                <p>You can only update one field at a time for the selected entry.</p>
+                <span data-type="entry-update"></span>
                 <label for="field">Field to update</label>
                 <select id="field" name="field">
                     <option value="Choose field" selected>Choose field</option>
@@ -45,11 +43,6 @@
                 <label class='hidden' data-type="asset-label" for="video">If URL, is it something other than an image?<input type="checkbox" id="video" name="video" value='video'></label>
                 <button data-action="update">Update this entry</button>
             </section>
-            <!-- <section data-action-type="delete" class="hidden delete-things">
-                <h3>Delete an entry</h3>
-                <input type="text" placeholder="Title to delete" name="titleBye">
-                <button data-action="delete">Delete this entry</button>
-            </section> -->
         </section>
 
         <section class="results">
@@ -63,7 +56,10 @@
                     <% }%>
                     <figcaption><%= stuff[i].caption %></figcaption>
                     <span class="current-tags"><%= stuff[i].tags.join(', ') %></span>
-                    <button data-action="delete" value="delete">Delete</button>
+                    <section class="button-box">
+                        <button data-action="do-something" data-detail="update-entry" value="update">Update</button> 
+                        <button data-action="delete" value="delete">Delete</button>
+                    </section>
                 </div>
                 <% }%>
         </section>

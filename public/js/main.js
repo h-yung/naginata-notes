@@ -12,6 +12,7 @@ function scrollToTop() {
 // show only the relevant form
 function showForms(event){
     document.querySelectorAll('[data-action-type]').forEach(elem => elem.dataset.actionType === event.target.value ? elem.classList.toggle('hidden') : elem.classList.add('hidden'))
+    scrollToTop();
 }
 
 // delete req
@@ -20,7 +21,7 @@ deleteButtons.forEach(button => button.addEventListener('click', e=> deleteThat(
 
 async function deleteThat(e){
     try{
-        const titleBye = e.target.parentElement.querySelector('h3').textContent
+        const titleBye = e.target.parentElement.parentElement.querySelector('h3').textContent
         const passcode = prompt(`Are you sure you want to delete ${titleBye}? Provide passcode:`, '')
         const response = await fetch('/deletePic', {
             method: 'delete',
@@ -51,12 +52,29 @@ function showTypeOption(){
 }
 
 // update/put req
-let updateButton = document.querySelector('button[data-action="update"]')
+// the buttons that make the form
+let startUpdateButtons = document.querySelectorAll('button[data-detail="update-entry"]')
+startUpdateButtons.forEach(button => button.addEventListener('click', e => startUpdate(e)))
+
+// the do-Somethings function handles the appearance of the form and fires first
+// although probably that handler no longer does much good since weird behavior happening with toggle
+function startUpdate(e){
+    const titleChange = e.target.parentElement.parentElement.querySelector('h3').textContent
+    // double parentElement is owing to the .button-box added for styling
+    document.querySelector('span[data-type="entry-update"]').textContent = titleChange
+    // console.log(titleChange + "1")
+}
+
+// the form button that actually updates
+const updateButton = document.querySelector('button[data-action="update"]')
 updateButton.addEventListener('click', updateEntry)
 
 async function updateEntry(){
+    const title = document.querySelector('span[data-type="entry-update"]').textContent
+    // there must be a more elegant way to pass state, but this isn't a React app...yet
+    // console.log(title + "2")
     const passcode = prompt('Provide passcode:', '')
-    const titleChange = document.querySelector('input[name="titleChange"]').value
+    
     const edit = document.querySelector('input[name="edit"]').value
     const field = document.querySelector('#field').value
     const urlType = document.querySelector('#video').value
@@ -66,7 +84,7 @@ async function updateEntry(){
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                'title': titleChange,
+                'title': title,
                 field,
                 edit,
                 urlType,

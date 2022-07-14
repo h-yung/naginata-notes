@@ -66,6 +66,11 @@ input{
     padding: 0.5rem 1rem;
 }
 
+select,
+option {
+    padding: 0.5rem;
+}
+
 ul {
     list-style: none;
     display: flex;
@@ -120,7 +125,11 @@ div:hover {
 }
 
 div button {
-    margin-bottom: 1em;
+    margin: 0 1em 1em 0;
+}
+
+.button-box {
+    display: flex;
 }
 
 .data-updates {
@@ -140,6 +149,13 @@ div button {
 
 .update > * {
     margin: 0.5rem 0;
+}
+
+span[data-type="entry-update"] {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
 }
 
 /* STRUCTURE */
@@ -236,8 +252,14 @@ nav button {
     figcaption {
         max-width: 90%;
     }
-
     .update {
         padding: 1rem;
+    }
+}
+
+@media screen and (max-width:480px){
+    .button-box {
+        flex-direction: column;
+        width: 90%;
     }
 }
