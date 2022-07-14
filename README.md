@@ -32,7 +32,7 @@ Naginata-focused CRUD app with ejs
 ### Learnings
 - Working with arrays as values for document keys in MongoDB: although there's dot notation in use and superficial similarity (e.g., .find()) parameters and syntax can be very different. Need a refresher on operators. May attempt with the Travel app built using React.
 - The value of a checkbox input is whatever you set as its value in the input attribute. This value is actualized only when the checkbox is checked.
-- Debugged issue: Moving delete and update buttons to entries
+- Moving delete and update buttons to entries
   - Getting title text must be done through `textContent` rather than `innerText` since the current styles applied to the text prevents a match from being found in the db. 
   - Also, keep track of what each button is actually doing (the delete button of the form vs. the delete button in the nav that showed the form)...
   - Change event listener writing as there are multiples of the button
