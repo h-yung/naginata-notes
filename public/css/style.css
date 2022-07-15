@@ -208,11 +208,6 @@ nav button {
 }
 
 /* media queries */
-
-@media screen and (max-width:913px){
-
-}
-
 @media screen and (max-width:840px){
 
     * {
@@ -225,9 +220,6 @@ nav button {
 
     nav h1 {
         display: block;
-    }
-    h2 {
-        display: none;
     }
 
     nav ul {
@@ -268,9 +260,12 @@ nav button {
     }
 }
 
-@media screen and (max-width:480px){
+@media screen and (max-width:509px){
     .button-box {
         flex-direction: column;
         width: 90%;
+    }
+    h2 {
+        display: none;
     }
 }
