@@ -4,10 +4,6 @@
     /* flex-direction: column; */
 }
 
-body {
-    background: lavender;
-}
-
 h1 {
     color: tomato;
     font-size: 1rem;
@@ -177,6 +173,7 @@ span[data-type="entry-update"] {
 
 body {
     margin: 0;
+    background: lavender;
 }
 
 nav {
