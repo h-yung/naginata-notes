@@ -5,7 +5,7 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 
 **Live**: https://naginata-notes.herokuapp.com/
 
-![screenshot of notebook](https://i.postimg.cc/bvhCsZkF/heroku-db-naginata.png)
+![heroku-db-naginata_v2](https://user-images.githubusercontent.com/102257735/179071686-f38e16f3-67f3-47bb-b964-63527430a348.png)
 
 ## Current state
 Naginata-focused CRUD app with ejs
@@ -22,20 +22,23 @@ Naginata-focused CRUD app with ejs
 **Optimizations**: 
 - **[IN PROGRESS]** Make searchable by tag. 
 - Searchable by title fragment, autocomplete.
+- Make it possible to update more than one field at a time, and clicking into the existing text or information.
 - Try autodeployment setup.
 - Should probably retitle this web app.
 - Update stack (apparently current heroku stack is now behind).
+- Rebuild any and all of the functionality in React.
 
 **Priorty level**: Low, as I'm focusing on React for next few works. However, bug fix may get prioritized.
 
 ### Learnings
 - Working with arrays as values for document keys in MongoDB: although there's dot notation in use and superficial similarity (e.g., .find()) parameters and syntax can be very different. Need a refresher on operators. May attempt with the Travel app built using React.
 - The value of a checkbox input is whatever you set as its value in the input attribute. This value is actualized only when the checkbox is checked.
-- Debugged issue: Moving delete and update buttons to entries
+- Moving delete and update buttons to entries
   - Getting title text must be done through `textContent` rather than `innerText` since the current styles applied to the text prevents a match from being found in the db. 
   - Also, keep track of what each button is actually doing (the delete button of the form vs. the delete button in the nav that showed the form)...
   - Change event listener writing as there are multiples of the button
   - The broader do-somethings event handler may no longer make sense with the individualized button functions.
+- Thinking about rebuild in React and how separate the front end dev can end up feeling in that scenario with additional steps to integrate and relaunch.
 
 ## Previous states
 "It's a page". The skeletal structure of a to-do list that you can't update aside from adding more. I used this to test what went wrong with deployment using autodeploy from Github. Current/successful deployment is using Heroku CLI. My understanding of autodeploy is that pushing to the repo was also pushing to Heroku (and in both cases pushing to main branch).
@@ -43,29 +46,3 @@ Once switched over to Heroku CLI and with git push heroku main, things started w
 
 ### Other quirks:
 - Must whitelist all IP addresses
-
-
-<!-- build as react app -->
-nav bar note
-export default function App() {
-  return (
-    <Router>
-      <Navbar />
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
-    </Router>
-  );
-}
-
-function Navbar() {
-  // visible on every page
-  return <>navbar</>
-}
-
-function Home() {
-  return <>home</>;
-}
-
-function About() {
-  return <>about</>;
-}
