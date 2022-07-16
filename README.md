@@ -8,7 +8,7 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 ![heroku-db-naginata_v2](https://user-images.githubusercontent.com/102257735/179071686-f38e16f3-67f3-47bb-b964-63527430a348.png)
 
 ## Current state
-Naginata-focused CRUD app with ejs
+Naginata-focused CRUD app with ejs.
 - Tags can now be added as array elements if comma+1 space separated, in preparation for search/filter functionality.
 - Scroll to top added on click of main nav title ("Naginata").
 - Update and delete buttons are moved into each notecard. Update still triggers a form at top with auto scroll to top.
@@ -24,7 +24,6 @@ Naginata-focused CRUD app with ejs
 - Searchable by title fragment, autocomplete.
 - Make it possible to update more than one field at a time, and clicking into the existing text or information.
 - Try autodeployment setup.
-- Should probably retitle this web app.
 - Update stack (apparently current heroku stack is now behind).
 - Rebuild any and all of the functionality in React.
 
