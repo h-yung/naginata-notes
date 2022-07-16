@@ -22,6 +22,7 @@ Naginata-focused CRUD app with ejs.
 **Optimizations**: 
 - **[IN PROGRESS]** Make searchable by tag. 
 - Searchable by title fragment, autocomplete.
+- Create filter by subject (similar to tag, essentially). Maybe break out category vs tag and consider whether it becomes more like an Anki vs regular notebook.
 - Make it possible to update more than one field at a time, and clicking into the existing text or information.
 - Try autodeployment setup.
 - Update stack (apparently current heroku stack is now behind).
