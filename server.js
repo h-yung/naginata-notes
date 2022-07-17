@@ -39,13 +39,13 @@ MongoClient.connect(process.env.DATABASE_URL, {
             const tag = req.params.bleep
             console.log(tag)
             // missing a conditional? since this is hard coded, assumes you will find.
-            // thingGroup.find({ tags: tag }).toArray()
-            // .then(results => {
-            //     res.render('index.ejs', { stuff: results }) //var in ejs is info
-            //     bob = results;
-            // })
-            // console.log('your filtered results are here')
-            // console.log(bob)
+            thingGroup.find({ tags: tag }).toArray()
+            .then(results => {
+                res.render('index.ejs', { stuff: results }) //var in ejs is info
+                bob = results;
+            })
+            console.log('your filtered results are here')
+            console.log(bob)
         })
 
         // search, not filter
