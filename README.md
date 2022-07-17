@@ -38,6 +38,7 @@ Naginata-focused CRUD app with ejs.
   - Also, keep track of what each button is actually doing (the delete button of the form vs. the delete button in the nav that showed the form)...
   - Change event listener writing as there are multiples of the button
   - The broader do-somethings event handler may no longer make sense with the individualized button functions.
+- Prior to working on tag filters (using params), linking to CSS and JS files (in the 'public' folder) from index.ejs was fine without a forward slash (express.static was enabled server-side). However, once I started working with params, the CSS and JS files were blocked with the warning "MIME mismatch" regardless of specified attributes. This was solved once a forward slash was prepended to the href values.
 - Thinking about rebuild in React and how separate the front end dev can end up feeling in that scenario with additional steps to integrate and relaunch.
 
 ## Previous states
