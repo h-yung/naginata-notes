@@ -35,36 +35,30 @@ MongoClient.connect(process.env.DATABASE_URL, {
 
         // filter by tag
         app.get ('/tags/:bleep', (req,res)=>{
-            let bob;
             const tag = req.params.bleep
-            console.log(tag)
             // missing a conditional? since this is hard coded, assumes you will find.
             thingGroup.find({ tags: tag }).toArray()
             .then(results => {
                 res.render('index.ejs', { stuff: results }) //var in ejs is info
-                bob = results;
             })
-            console.log('your filtered results are here')
-            console.log(bob)
         })
 
         // search, not filter
-        app.get ('/find', (req,res)=>{
-            let bob;
-            if (req.body.searchBy === ""){
-                console.log('Entered nothing')
-                return
-            }else {
-                thingGroup.find({ tags: req.body.searchBy }).toArray()
-                .then(results => {
-                    res.render('index.ejs', { stuff: results }) //var in ejs is info
-                    bob = results;
-                })
-                console.log('your filter results are here')
-                console.log(bob)
-
-            }
-        })
+        // app.get ('/find', (req,res)=>{
+        //     let bob;
+        //     if (req.body.searchBy === ""){
+        //         console.log('Entered nothing')
+        //         return
+        //     }else {
+        //         thingGroup.find({ tags: req.body.searchBy }).toArray()
+        //         .then(results => {
+        //             res.render('index.ejs', { stuff: results }) //var in ejs is info
+        //             bob = results;
+        //         })
+        //         console.log('your filter results are here')
+        //         console.log(bob)
+        //     }
+        // })
 
         app.post('/addPic', (req,res)=>{
             if (req.body.passcode === '2554'){

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>It's a page</title>
-    <link type="text/css" href="css/style.css"> 
+    <link type="text/css" rel="stylesheet" href="/css/style.css"> 
 </head>
 <body>
     <nav>
@@ -19,15 +19,14 @@
     </nav>
     <section class="wrapper">
 
-        <!-- testing -->
-        <section class="filterlist">  
-            <form data-action-type="filter" action="/find" method="GET"><!--eventually add class hidden, aria labels to inputs-->
+        <!-- testing; eventually add class hidden, aria labels to inputs -->
+        <!-- <section class="filterlist">  
+            <form data-action-type="filter" action="/find" method="GET">
                 <input type="text" placeholder="Search by tag" name="searchBy">
                 <button>Find</button>
             </form>
-        </section>
-        <!-- testing -->
-
+        </section> --> 
+        
         <section class="data-updates">
             <form data-action-type="add" class="hidden" action="/addPic" method="POST">
                 <h3>Add entry</h3>
@@ -72,12 +71,18 @@
                         <a data-type="vid" href="<%= stuff[i].vidURL %>" target=_blank ><span>Source URL</span></a>
                     <% }%>
                     <figcaption><%= stuff[i].caption %></figcaption>
+                    <!-- what needs to happen here:
+                        Instead of joining to display as a string, 
+                        for each tag element in tag,
+                        they need to print as clickable li in a formatted list. somehow joined nicely visually
+                        on li click, it will take e.target.innerText as the param value and trigger a tag-based query,
+                        reloading page to show filtered results. Basically react-tmg-day3 -->
                     <span class="current-tags"><%= stuff[i].tags.join(', ') %></span>
                 </div>
                 <% }%>
         </section>
         
     </section>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>
