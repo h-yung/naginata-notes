@@ -34,8 +34,8 @@ MongoClient.connect(process.env.DATABASE_URL, {
         })
 
         // filter by tag
-        app.get ('/tags/:bleep', (req,res)=>{
-            const tag = req.params.bleep
+        app.get ('/tags/:keyword', (req,res)=>{
+            const tag = req.params.keyword
             // missing a conditional? since this is hard coded, assumes you will find.
             thingGroup.find({ tags: tag }).toArray()
             .then(results => {

@@ -9,6 +9,27 @@ function scrollToTop() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 } 
 
+// filtering
+const tags = document.querySelectorAll('[data-tag]').forEach(elem => elem.addEventListener('click', e => filterByTag(e)))
+
+async function filterByTag(e){
+    try {
+        const tag = e.target.textContent.toLowerCase()
+        // const result = await fetch(`https://naginata-notes.herokuapp.com/tags/${tag}`)
+        const response = await fetch(`/tags/${tag}`, {
+            method: 'get',
+            // no headers?
+            // no body?
+        })
+        // nothing left to do because the resulting call hits ejs template?
+        console.log('work on the filterByTag function in your main.js')
+        const data = await response.json()
+        // location.reload()
+    }catch(err){
+        console.log(err)
+    }
+}
+
 // show only the relevant form
 function showForms(event){
     document.querySelectorAll('[data-action-type]').forEach(elem => elem.dataset.actionType === event.target.value ? elem.classList.toggle('hidden') : elem.classList.add('hidden'))

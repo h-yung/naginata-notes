@@ -27,12 +27,21 @@ h3 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+ul {
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 a {
     margin: 0.5rem 0;
     display: block;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+i {
+    margin-right: 1rem;
 }
 
 img {
@@ -69,11 +78,6 @@ input{
 select,
 option {
     padding: 0.5rem;
-}
-
-ul {
-    list-style: none;
-    display: flex;
 }
 
 button {
@@ -177,14 +181,54 @@ body {
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    background: hsl(225, 84%, 19%);
     padding: 0.5rem 2rem;
     position: sticky;
     top: 0;
     z-index:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: hsl(225, 84%, 19%);
+    color: white;
+}
+
+nav section {
+    width: 50%;
+    /* is flex container */
+    align-items: baseline;
+}
+
+nav ul {
+    display: none;
+}
+
+label[for="filterToggle"]:hover{
+    cursor: pointer;
+}
+
+#filterToggle {
+    visibility: hidden;
+}
+
+#filterToggle:checked ~ ul {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /*for mobile*/
+    border:1px solid red;
+    width: 100%;
+    position: fixed;
+    top: 5rem; /* = nav height */
+    left: 0;
+    display: flex;
+    background: hsl(225, 84%, 19%);
+}
+
+nav ul li{
+    padding: 1rem; 
+}
+nav ul li:hover {
+    background: tomato;
+    cursor: pointer;
 }
 
 nav h1:hover {
@@ -214,16 +258,15 @@ nav button {
     * {
         box-sizing: border-box;
     }
-
-    nav {
-        flex-wrap: wrap;
+    h2 {
+        display: none;
     }
 
     nav h1 {
         display: block;
     }
 
-    nav ul {
+    nav ul { 
         margin: 1rem 0;
         padding: 0;
     }
@@ -266,7 +309,7 @@ nav button {
         flex-direction: column;
         width: 90%;
     }
-    h2 {
-        display: none;
+    nav {
+        justify-content: space-between;
     }
 }
