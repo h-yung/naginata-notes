@@ -275,6 +275,10 @@ nav button {
     nav button {
         margin: 0;
     }
+
+    #filterToggle:checked ~ ul {
+        top: 4rem;
+    } 
     
     .wrapper {
         flex-direction: column;
