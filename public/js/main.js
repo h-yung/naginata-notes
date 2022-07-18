@@ -12,19 +12,13 @@ function scrollToTop() {
 // filtering
 const tags = document.querySelectorAll('[data-tag]').forEach(elem => elem.addEventListener('click', e => filterByTag(e)))
 
-async function filterByTag(e){
+function filterByTag(e){
     try {
         const tag = e.target.textContent.toLowerCase()
-        // const result = await fetch(`https://naginata-notes.herokuapp.com/tags/${tag}`)
-        const response = await fetch(`/tags/${tag}`, {
-            method: 'get',
-            // no headers?
-            // no body?
-        })
-        // nothing left to do because the resulting call hits ejs template?
-        console.log('work on the filterByTag function in your main.js')
-        const data = await response.json()
-        // location.reload()
+        /*Whenever a new value is assigned to the location object, 
+        a document will be loaded using the URL 
+        as if location.assign() had been called with the modified URL. */
+        window.location.assign(`/tags/${tag}`)
     }catch(err){
         console.log(err)
     }
