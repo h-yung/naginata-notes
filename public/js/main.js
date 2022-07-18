@@ -2,8 +2,8 @@ const doSomethings = document.querySelectorAll('button[data-action="do-something
 doSomethings.forEach(button => button.addEventListener('click', e => showForms(e)))
 
 // go to top
-const backToTop = document.querySelector('[data-action="goTop"]')
-backToTop.addEventListener('click', scrollToTop)
+const backToTop = document.querySelector('[data-action="goTopShowAll"]')
+backToTop.addEventListener('click', () => {scrollToTop(); window.location.assign(`/`)})
 function scrollToTop() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -13,8 +13,8 @@ function scrollToTop() {
 const tags = document.querySelectorAll('[data-tag]').forEach(elem => elem.addEventListener('click', e => filterByTag(e)))
 
 function filterByTag(e){
+    const tag = e.target.textContent.toLowerCase();
     try {
-        const tag = e.target.textContent.toLowerCase()
         /*Whenever a new value is assigned to the location object, 
         a document will be loaded using the URL 
         as if location.assign() had been called with the modified URL. */
@@ -25,14 +25,16 @@ function filterByTag(e){
 }
 
 // search title strings
-// this would be more efficient with React...
+// this would be more efficient with React... 
+// doing on change (here, 'input') server side is too costly. So this happens on Enter key
 const search = document.querySelector('#search')
-search.addEventListener('input', activateSearch)
+search.addEventListener('change', activateSearch)
 
 async function activateSearch(){
     const searchTerm = search.value;
     try {
         console.log('Continue here line 35')
+        window.location.assign(`/search?term=${searchTerm}`)
         // send word to backend, find by fragment in title on Mongo.
     }
     catch(err){

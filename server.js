@@ -44,6 +44,15 @@ MongoClient.connect(process.env.DATABASE_URL, {
         })
 
         // search, not filter
+        app.get ('/search', (req,res)=>{
+            const term = req.query.term
+            console.log(term)
+            thingGroup.find({ title: term }).toArray()
+            .then(results => {
+                res.render('index.ejs', { stuff: results }) //var in ejs is info
+            })
+        })
+        
         // app.get ('/find', (req,res)=>{
         //     let bob;
         //     if (req.body.searchBy === ""){
