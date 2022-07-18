@@ -20,7 +20,7 @@ Naginata-focused CRUD app with ejs.
 - The auto scroll up when a form appears makes sense, but sometimes odd behavior results since the showForm is on a toggle. I'd like to be able to let the user hide the form again (currently on second click) but this means, along with the batch-applied event handler, sometimes you go to the top but the form is hidden (you may have clicked update on one entry and decided to click update on another entry. Even number of clicks = form is hidden).
 
 **Optimizations**: 
-- **[IN PROGRESS]** Make filterable by tag. UI is set up as are params in backend. Working on frontend js.
+- **[IN PROGRESS]** Make filterable by tag. UI is set up as are params in backend. Working on frontend js. Nothing is really accessible yet - the toggle for example needs a keydown listener to be triggered by 'Enter' or spacebar.
 - Searchable by title fragment, autocomplete.
 - Create filter by subject (similar to tag, essentially). Maybe break out category vs tag and consider whether it becomes more like an Anki vs regular notebook.
 - Make it possible to update more than one field at a time, and clicking into the existing text or information.
