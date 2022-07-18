@@ -24,6 +24,23 @@ function filterByTag(e){
     }
 }
 
+// search title strings
+// this would be more efficient with React...
+const search = document.querySelector('#search')
+search.addEventListener('input', activateSearch)
+
+async function activateSearch(){
+    const searchTerm = search.value;
+    try {
+        console.log('Continue here line 35')
+        // send word to backend, find by fragment in title on Mongo.
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+
 // show only the relevant form
 function showForms(event){
     document.querySelectorAll('[data-action-type]').forEach(elem => elem.dataset.actionType === event.target.value ? elem.classList.toggle('hidden') : elem.classList.add('hidden'))

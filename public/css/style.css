@@ -1,10 +1,10 @@
 .wrapper {
-    padding: 1rem 2rem;
     display: flex;
     /* flex-direction: column; */
 }
 
 h1 {
+    margin: 0; /* avoid bounce/nav width change when hidden */
     color: tomato;
     font-size: 1rem;
     letter-spacing: 0.2rem;
@@ -180,8 +180,12 @@ body {
     background: lavender;
 }
 
+main {
+    padding: 1rem 2rem;
+}
+
 nav {
-    padding: 0.5rem 2rem;
+    padding: 2rem;
     position: sticky;
     top: 0;
     z-index:1;
@@ -196,6 +200,7 @@ nav section {
     width: 50%;
     /* is flex container */
     align-items: baseline;
+    padding: 0;
 }
 
 nav ul {
@@ -218,7 +223,6 @@ label[for="filterToggle"]:hover{
     position: fixed;
     top: 5rem; /* = nav height */
     left: 0;
-    display: flex;
     background: hsl(225, 84%, 19%);
 }
 
@@ -229,6 +233,36 @@ nav ul li:hover {
     background: tomato;
     cursor: pointer;
 }
+
+#search,
+label[for='search'] {
+    display: none;
+}
+
+#showSearch {
+    visibility: hidden;
+}
+
+#showSearch:checked ~ label[for='search'] {
+    margin: 0;
+    display: flex;
+    /* position: fixed; */
+}
+#showSearch:checked ~ #search {
+    margin: 0 1rem 0 0; /*keep apart from Add button */
+    display: inline-block;
+}
+
+#showSearch:checked ~ section[data-type='titles'] { /*no room for you*/
+    display: none;
+}
+
+/* make it so that hidden if the other is visible? 
+Problem: need to also change the checked or unchecked boolean */
+/* #filterToggle:checked ~ #showSearch:checked ~ #search,
+#filterToggle:checked ~ #showSearch:checked ~ ul {
+    display: none;
+} */
 
 nav h1:hover {
     cursor: pointer;
@@ -241,7 +275,6 @@ nav h1:hover {
 nav button {
     letter-spacing: 0.2rem;
     text-transform: uppercase;
-    margin: 0 1rem;
 }
 
 
@@ -274,12 +307,13 @@ nav button {
     }
     nav button {
         margin: 0;
+        font-weight: bold;
     }
 
     #filterToggle:checked ~ ul {
         top: 4rem;
     } 
-    
+
     .wrapper {
         flex-direction: column;
         padding: 0;
