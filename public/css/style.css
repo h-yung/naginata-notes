@@ -214,7 +214,6 @@ label[for="filterToggle"]:hover{
     margin: 0;
     display: flex;
     flex-wrap: wrap; /*for mobile*/
-    border:1px solid red;
     width: 100%;
     position: fixed;
     top: 5rem; /* = nav height */
