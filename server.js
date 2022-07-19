@@ -28,7 +28,7 @@ MongoClient.connect(process.env.DATABASE_URL, {
             // res.send('HELLO!')
             thingGroup.find().toArray()
                 .then(results => {
-                    res.render('index.ejs', { stuff: results }) //var in ejs is info
+                    res.render('index.ejs', { stuff: results }) 
                 })
             console.log('we sent a thing')
         })
@@ -36,10 +36,10 @@ MongoClient.connect(process.env.DATABASE_URL, {
         // filter by tag
         app.get ('/tags/:keyword', (req,res)=>{
             const tag = req.params.keyword
-            // missing a conditional? since this is hard coded, assumes you will find.
             thingGroup.find({ tags: tag }).toArray()
             .then(results => {
-                res.render('index.ejs', { stuff: results }) //var in ejs is info
+                res.render('index.ejs', { stuff: results }) 
+                console.log(results)
             })
         })
 
@@ -47,28 +47,14 @@ MongoClient.connect(process.env.DATABASE_URL, {
         app.get ('/search', (req,res)=>{
             const term = req.query.term
             console.log(term)
-            thingGroup.find({ title: term }).toArray()
+            // thingGroup.find({ title: term }).toArray()
+            thingGroup.find({ title: { $regex:term, $options: 'i'}}).toArray()
             .then(results => {
-                res.render('index.ejs', { stuff: results }) //var in ejs is info
+                res.render('index.ejs', { stuff: results }) 
+                console.log(results)
             })
         })
         
-        // app.get ('/find', (req,res)=>{
-        //     let bob;
-        //     if (req.body.searchBy === ""){
-        //         console.log('Entered nothing')
-        //         return
-        //     }else {
-        //         thingGroup.find({ tags: req.body.searchBy }).toArray()
-        //         .then(results => {
-        //             res.render('index.ejs', { stuff: results }) //var in ejs is info
-        //             bob = results;
-        //         })
-        //         console.log('your filter results are here')
-        //         console.log(bob)
-        //     }
-        // })
-
         app.post('/addPic', (req,res)=>{
             if (req.body.passcode === process.env.PASSCODE){
                 const newTags = req.body.tags.split(', ')
