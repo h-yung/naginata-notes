@@ -251,6 +251,7 @@ label[for='search'] {
 #showSearch:checked ~ #search {
     margin: 0 1rem 0 0; /*keep apart from Add button */
     display: inline-block;
+    min-width: 15rem;
 }
 
 #showSearch:checked ~ section[data-type='titles'] { /*no room for you*/
