@@ -349,4 +349,16 @@ nav button {
     nav {
         justify-content: space-between;
     }
+
+    #search {
+        position: fixed;
+        top: 6rem;
+        left: 0;
+        padding: 1rem 1.5rem;
+        width: 100vw;
+        font-size: larger;
+    }
+    #filterToggle:checked ~ #search {
+        top: 7rem; /*make way for active filter bar - currently 1 row*/
+    }
 }
