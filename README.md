@@ -5,7 +5,7 @@ A notebook to contain practice notes that can be added, updated, or deleted. Dis
 
 **Live**: https://naginata-notes.herokuapp.com/
 
-![heroku-db-naginata_v2](https://user-images.githubusercontent.com/102257735/179071686-f38e16f3-67f3-47bb-b964-63527430a348.png)
+![heroku-db-naginata_v3](https://user-images.githubusercontent.com/102257735/179806708-cf5e67e0-1824-4ee8-86fd-58ac0e119723.png)
 
 ## Current state
 Naginata-focused CRUD app with ejs.
