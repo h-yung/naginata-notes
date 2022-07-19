@@ -1,5 +1,5 @@
 # Naginata Notes
-A notebook to contain practice notes that can be added, updated, or deleted. Displayed as note cards.
+A notebook to contain practice notes that can be added, updated, or deleted. Displayed as note cards that you can filter or search by title fragment.
 
 **Tech used**: CSS, JavaScript, Node.js, Express, MongoDB, some EJS.
 
@@ -21,8 +21,8 @@ Naginata-focused CRUD app with ejs.
 - The auto scroll up when a form appears makes sense, but sometimes odd behavior results since the showForm is on a toggle. I'd like to be able to let the user hide the form again (currently on second click) but this means, along with the batch-applied event handler, sometimes you go to the top but the form is hidden (you may have clicked update on one entry and decided to click update on another entry. Even number of clicks = form is hidden).
 
 **Optimizations**: 
-- Make tag filter toggle accessible (needs a keydown listener to be triggered by 'Enter' or spacebar).
-- Searchable by title fragment, autocomplete.
+- Make tag filter and title search toggles accessible (needs a keydown listener to be triggered by 'Enter' or spacebar).
+- Autocomplete for title search?
 - Consider whether this app becomes more like an Anki vs regular notebook.
 - Make it possible to update more than one field at a time, and clicking into the existing text or information.
 - Try autodeployment setup.
@@ -42,7 +42,8 @@ Naginata-focused CRUD app with ejs.
 - Prior to working on tag filters (using params), linking to CSS and JS files (in the 'public' folder) from index.ejs was fine without a forward slash (express.static was enabled server-side). However, once I started working with params, the CSS and JS files were blocked with the warning "MIME mismatch" regardless of specified attributes. This was solved once a forward slash was prepended to the href values.
 - Thinking about rebuild in React and how separate the front end dev can end up feeling in that scenario with additional steps to integrate and relaunch.
 - Making results filterable based on filter keywords: Current setup means reloading the full page with a new url with new filter params applied and uses `window.location.assign(/*path with params variable*/)` which is set up on server side as a read req. However, along with planned rebuild with React, I would probably want to not use EJS and just have a component update upon receiving a fragment of the data to be handled client side.
-- In React, listening to change of input value is "onChange"; here, equivalent event for input with `type="text"` would be "input". It is "change" for `<select>` element.
+- In React, listening to change of input value is "onChange"; here, equivalent event for input with `type="text"` would be "input". It is "change" for `<select>` element. 
+- Searchable by title fragment: Syntax differences between MongoDB and Node can cause problems. I'm still using the .find().toArray() approach (.aggregate and $match seems like overkill but worth trying out sometime), but the key is when using regex, in Mongo shell you include forward slashes but you omit these in Node (else you get nothing but an empty array back as nothing will be found).
 
 ## Previous states
 "It's a page". The skeletal structure of a to-do list that you can't update aside from adding more. I used this to test what went wrong with deployment using autodeploy from Github. Current/successful deployment is using Heroku CLI. My understanding of autodeploy is that pushing to the repo was also pushing to Heroku (and in both cases pushing to main branch).
