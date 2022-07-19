@@ -36,7 +36,6 @@ Naginata-focused CRUD app with ejs.
 - Moving delete and update buttons to entries
   - Getting title text must be done through `textContent` rather than `innerText` since the current styles applied to the text prevents a match from being found in the db. 
   - Also, keep track of what each button is actually doing (the delete button of the form vs. the delete button in the nav that showed the form)...
-  - Change event listener writing as there are multiples of the button
   - The broader do-somethings event handler may no longer make sense with the individualized button functions.
 - Prior to working on tag filters (using params), linking to CSS and JS files (in the 'public' folder) from index.ejs was fine without a forward slash (express.static was enabled server-side). However, once I started working with params, the CSS and JS files were blocked with the warning "MIME mismatch" regardless of specified attributes. This was solved once a forward slash was prepended to the href values.
 - Making results filterable based on filter keywords: Current setup means reloading the full page with a new url with new filter params applied and uses `window.location.assign(/*path with params variable*/)` which is set up on server side as a read req. However, along with planned rebuild with React, I would probably want to not use EJS and just have a component update upon receiving a fragment of the data to be handled client side.
