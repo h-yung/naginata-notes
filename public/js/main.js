@@ -1,13 +1,24 @@
 const doSomethings = document.querySelectorAll('button[data-action="do-something"]')
 doSomethings.forEach(button => button.addEventListener('click', e => showForms(e)))
 
-// go to top
+// go to top snippet
 const backToTop = document.querySelector('[data-action="goTopShowAll"]')
 backToTop.addEventListener('click', () => {scrollToTop(); window.location.assign(`/`)})
 function scrollToTop() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 } 
+
+//toggle checkboxes (filter and search toggles) on Enter
+const toggles = document.querySelectorAll('label[data-action="toggle"]')
+toggles.forEach(toggle => toggle.addEventListener('keyup', e=>toggleCheck(e)))
+function toggleCheck(e){ 
+    if (e.keyCode === 13 || e.keyCode === 32) { //if ENTER key or spacebar
+        // need to target the input to which the label applies
+        const checkbox = e.target.nextElementSibling 
+        checkbox.checked = !checkbox.checked;
+    }
+}
 
 // filtering
 const tags = document.querySelectorAll('[data-tag]').forEach(elem => elem.addEventListener('click', e => filterByTag(e)))
@@ -25,8 +36,6 @@ function filterByTag(e){
 }
 
 // search title strings
-// this would be more efficient with React... 
-// doing on change (here, 'input') server side is too costly. So this happens on Enter key
 const search = document.querySelector('#search')
 search.addEventListener('change', activateSearch)
 
@@ -35,9 +44,7 @@ async function activateSearch(){
     try {
         console.log('Continue here line 35')
         const response = await fetch(`/search?term=${searchTerm}`)
-        // nothing to do after?
-        // window.location.assign(`/search?term=${searchTerm}`)
-        // send word to backend, find by fragment in title on Mongo.
+        // send word to backend, find by fragment in title on Mongo. Redirect to page of results.
         location.assign(`/search?term=${searchTerm}`)
     }
     catch(err){
@@ -114,7 +121,6 @@ async function updateEntry(){
     const edit = document.querySelector('input[name="edit"]').value
     const field = document.querySelector('#field').value
     const urlType = document.querySelector('#video').value
-    // console.log(`title is ${titleChange}, the edit is for the ${field} and consists of ${edit}`)
     try{
         const response = await fetch('/update', {
             method: 'put',

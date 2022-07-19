@@ -10,8 +10,11 @@
 </head>
 <body>
     <nav>
-        <label for="filterToggle" tabindex="0"><i class="fa-solid fa-filter"></i></label><input role="button" type="checkbox" id="filterToggle" value="filter-visible">
-        <label for="showSearch" tabindex="0"><i class="fa-solid fa-magnifying-glass"></i></label><input role="button" type="checkbox" id="showSearch" value="search-visible">
+        <!-- toggles need to be siblings to affected elements -->
+        <label data-action="toggle" for="filterToggle" tabindex="0"><i class="fa-solid fa-filter"></i></label>
+        <input role="button" type="checkbox" id="filterToggle" value="filter-visible">
+        <label data-action="toggle" for="showSearch" tabindex="0"><i class="fa-solid fa-magnifying-glass"></i></label>
+        <input role="button" type="checkbox" id="showSearch" value="search-visible">
         <input type="text" id="search" aria-label="Type search term and Enter key" placeholder="Type search term and Enter key" value=""> 
         <section data-type="titles" class="wrapper">
             <h1 data-action="goTopShowAll">Naginata</h1>
@@ -68,12 +71,6 @@
                         <a data-type="vid" href="<%= stuff[i].vidURL %>" target=_blank ><span>Source URL</span></a>
                     <% }%>
                     <figcaption><%= stuff[i].caption %></figcaption>
-                    <!-- what needs to happen here:
-                        Instead of joining to display as a string, 
-                        for each tag element in tag,
-                        they need to print as clickable li in a formatted list. somehow joined nicely visually
-                        on li click, it will take e.target.innerText as the param value and trigger a tag-based query,
-                        reloading page to show filtered results. Basically react-tmg-day3 -->
                     <span class="current-tags"><%= stuff[i].tags.join(', ') %></span>
                     
                 </div>
