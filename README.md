@@ -22,7 +22,7 @@ Naginata-focused CRUD app with ejs.
 
 **Optimizations** (in roughly prioritized order): 
 - Make it possible to update more than one field at a time, and clicking into the existing text or information.
-- Rebuild any and all of the functionality in React. 
+- Rebuild any and all of the functionality in React. It will be easier to handle data client side for the desired search functionality.
 - Autocomplete for title search?
 - Consider whether this app becomes more like an Anki vs regular notebook.
 - Try autodeployment setup.
@@ -39,11 +39,11 @@ Naginata-focused CRUD app with ejs.
   - Change event listener writing as there are multiples of the button
   - The broader do-somethings event handler may no longer make sense with the individualized button functions.
 - Prior to working on tag filters (using params), linking to CSS and JS files (in the 'public' folder) from index.ejs was fine without a forward slash (express.static was enabled server-side). However, once I started working with params, the CSS and JS files were blocked with the warning "MIME mismatch" regardless of specified attributes. This was solved once a forward slash was prepended to the href values.
-- Thinking about rebuild in React and how separate the front end dev can end up feeling in that scenario with additional steps to integrate and relaunch.
 - Making results filterable based on filter keywords: Current setup means reloading the full page with a new url with new filter params applied and uses `window.location.assign(/*path with params variable*/)` which is set up on server side as a read req. However, along with planned rebuild with React, I would probably want to not use EJS and just have a component update upon receiving a fragment of the data to be handled client side.
 - In React, listening to change of input value is "onChange"; here, equivalent event for input with `type="text"` would be "input". It is "change" for `<select>` element. I really like the visual effect of the rendered list updating as you type, but my current setup is not allowing for it (immediately redirects to search?term=TERM). And with the data being handled server side and fed into EJS template, this would be a ton of requests to the server. Looking forward to setting up for better handling client side.
 - Searchable by title fragment: Syntax differences between MongoDB and Node can cause problems. I'm still using the .find().toArray() approach (.aggregate and $match seems like overkill but worth trying out sometime), but the key is when using regex, in Mongo shell you include forward slashes but you omit these in Node (else you get nothing but an empty array back as nothing will be found).
 - Making filter and search toggles accessible: Snippet in main.js lines 13-21. Specifying the only keys that should trigger, by keycode (Enter 13, spacebar 32). Because the actual input element is hidden, the listeners needed to be on the labels, but the check toggle had to target the input, which is selected using `nextElementSibling`.
+
 
 ## Previous states
 "It's a page". The skeletal structure of a to-do list that you can't update aside from adding more. I used this to test what went wrong with deployment using autodeploy from Github. Current/successful deployment is using Heroku CLI. My understanding of autodeploy is that pushing to the repo was also pushing to Heroku (and in both cases pushing to main branch).
