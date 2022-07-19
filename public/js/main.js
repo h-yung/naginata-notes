@@ -38,12 +38,12 @@ async function activateSearch(){
         // nothing to do after?
         // window.location.assign(`/search?term=${searchTerm}`)
         // send word to backend, find by fragment in title on Mongo.
+        location.assign(`/search?term=${searchTerm}`)
     }
     catch(err){
         console.log(err)
     }
 }
-
 
 // show only the relevant form
 function showForms(event){

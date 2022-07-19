@@ -39,19 +39,15 @@ MongoClient.connect(process.env.DATABASE_URL, {
             thingGroup.find({ tags: tag }).toArray()
             .then(results => {
                 res.render('index.ejs', { stuff: results }) 
-                console.log(results)
             })
         })
 
         // search, not filter
         app.get ('/search', (req,res)=>{
             const term = req.query.term
-            console.log(term)
-            // thingGroup.find({ title: term }).toArray()
             thingGroup.find({ title: { $regex:term, $options: 'i'}}).toArray()
             .then(results => {
                 res.render('index.ejs', { stuff: results }) 
-                console.log(results)
             })
         })
         
