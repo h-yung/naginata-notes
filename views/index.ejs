@@ -10,29 +10,24 @@
 </head>
 <body>
     <nav>
-        <label for="filterToggle" tabindex="0"><i class="fa-solid fa-filter"></i></label><input role="button" type="checkbox" id="filterToggle" value="filter-visible">
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <!-- toggles need to be siblings to affected elements -->
+        <label data-action="toggle" for="filterToggle" tabindex="0"><i class="fa-solid fa-filter"></i></label>
+        <input role="button" type="checkbox" id="filterToggle" value="filter-visible">
+        <label data-action="toggle" for="showSearch" tabindex="0"><i class="fa-solid fa-magnifying-glass"></i></label>
+        <input role="button" type="checkbox" id="showSearch" value="search-visible">
+        <input type="text" id="search" aria-label="Type search term and Enter key" placeholder="Type search term and Enter key" value=""> 
         <section data-type="titles" class="wrapper">
-            <h1 data-action="goTop">Naginata</h1>
+            <h1 data-action="goTopShowAll">Naginata</h1>
             <h2>Unsorted notes</h2>
         </section>
-        <button data-action="do-something" value="add">Add</button>
+        <button data-action="do-something" value="add" aria-label="add">+</button>
         <ul>
             <li data-tag="definition">Definition</li>
             <li data-tag="technique">Technique</li>
             <li data-tag="standards">Standards</li>
         </ul>
     </nav>
-    <section class="wrapper">
-
-        <!-- testing; eventually add class hidden, aria labels to inputs -->
-        <!-- <section class="filterlist">  
-            <form data-action-type="filter" action="/find" method="GET">
-                <input type="text" placeholder="Search by tag" name="searchBy">
-                <button>Find</button>
-            </form>
-        </section> --> 
-        
+    <main class="wrapper">
         <section class="data-updates">
             <form data-action-type="add" class="hidden" action="/addPic" method="POST">
                 <h3>Add entry</h3>
@@ -76,19 +71,12 @@
                         <a data-type="vid" href="<%= stuff[i].vidURL %>" target=_blank ><span>Source URL</span></a>
                     <% }%>
                     <figcaption><%= stuff[i].caption %></figcaption>
-                    <!-- what needs to happen here:
-                        Instead of joining to display as a string, 
-                        for each tag element in tag,
-                        they need to print as clickable li in a formatted list. somehow joined nicely visually
-                        on li click, it will take e.target.innerText as the param value and trigger a tag-based query,
-                        reloading page to show filtered results. Basically react-tmg-day3 -->
                     <span class="current-tags"><%= stuff[i].tags.join(', ') %></span>
                     
                 </div>
                 <% }%>
         </section>
-        
-    </section>
+    </main>
     <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>
