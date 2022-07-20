@@ -11,9 +11,9 @@
 <body>
     <nav>
         <!-- toggles need to be siblings to affected elements -->
-        <label data-action="toggle" for="filterToggle" tabindex="0" aria-pressed="false"><i class="fa-solid fa-filter"></i></label>
+        <label data-action="toggle" for="filterToggle" tabindex="0" aria-pressed="false" aria-label="filter by tag"><i class="fa-solid fa-filter"></i></label>
         <input role="button" type="checkbox" id="filterToggle" value="filter-visible">
-        <label data-action="toggle" for="showSearch" tabindex="0"><i class="fa-solid fa-magnifying-glass"></i></label>
+        <label data-action="toggle" for="showSearch" tabindex="0" aria-label="search by term"><i class="fa-solid fa-magnifying-glass"></i></label>
         <input role="button" type="checkbox" id="showSearch" aria-pressed="false" value="search-visible">
         <input type="text" id="search" aria-label="Type search term and Enter" placeholder="Type search term and Enter key" value=""> 
         <section data-type="titles" class="wrapper">
