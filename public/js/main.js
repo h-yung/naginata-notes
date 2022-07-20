@@ -1,17 +1,21 @@
 const doSomethings = document.querySelectorAll('button[data-action="do-something"]')
 doSomethings.forEach(button => button.addEventListener('click', e => showForms(e)))
 
-// go to top snippet
-const backToTop = document.querySelector('[data-action="goTopShowAll"]')
-backToTop.addEventListener('click', () => {scrollToTop(); window.location.assign(`/`)})
-function scrollToTop() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-} 
+// click a focused element using Enter and spacebar
+function checkKeyActivate(e, callback){
+    // callback is whatever should be triggered on mouse click
+    if (e.keyCode === 13 || e.keyCode === 32) { 
+        console.log(`Keycode is ${e.keyCode}`)
+        callback();
+    }else {
+        return
+    }
+}
 
-//toggle checkboxes (filter and search toggles) on Enter
+//toggle checkboxes (filter and search toggles) on Enter and spacebar
 const toggles = document.querySelectorAll('label[data-action="toggle"]')
 toggles.forEach(toggle => toggle.addEventListener('keyup', e=>toggleCheck(e)))
+
 function toggleCheck(e){ 
     if (e.keyCode === 13 || e.keyCode === 32) { //if ENTER key or spacebar
         // need to target the input to which the label applies
@@ -20,8 +24,43 @@ function toggleCheck(e){
     }
 }
 
+// go to top snippet
+const backToTop = document.querySelector('[data-action="goTopShowAll"]')
+backToTop.addEventListener('click', scrollToTop)
+backToTop.addEventListener('keyup', e =>{checkKeyActivate(e, scrollToTopAndRedirect);})
+
+function scrollToTop() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
+
+function scrollToTopAndRedirect(){ //for backToTop only. bc keypress wrapper.
+    scrollToTop();
+    location.href = '/'
+}
+
 // filtering
-const tags = document.querySelectorAll('[data-tag]').forEach(elem => elem.addEventListener('click', e => filterByTag(e)))
+const tags = document.querySelectorAll('[data-tag]')
+tags.forEach(elem => elem.addEventListener('click', e => filterByTag(e)))
+// not a beautiful callback
+let focused;
+tags.forEach(elem => elem.addEventListener('keyup', e => {checkKeyActivate(e, changeFocus)}))
+tags.forEach(elem => elem.addEventListener('keyup', e => wrapFilterByTag(e)))
+
+function changeFocus(){
+    focused = true;
+}
+
+function wrapFilterByTag(e){
+    if (focused === true){
+        const tag = e.currentTarget.textContent.toLowerCase();
+        try {
+            window.location.assign(`/tags/${tag}`)
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
 
 function filterByTag(e){
     const tag = e.target.textContent.toLowerCase();

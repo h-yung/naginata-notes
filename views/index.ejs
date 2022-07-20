@@ -11,20 +11,20 @@
 <body>
     <nav>
         <!-- toggles need to be siblings to affected elements -->
-        <label data-action="toggle" for="filterToggle" tabindex="0"><i class="fa-solid fa-filter"></i></label>
+        <label data-action="toggle" for="filterToggle" tabindex="0" aria-pressed="false"><i class="fa-solid fa-filter"></i></label>
         <input role="button" type="checkbox" id="filterToggle" value="filter-visible">
         <label data-action="toggle" for="showSearch" tabindex="0"><i class="fa-solid fa-magnifying-glass"></i></label>
-        <input role="button" type="checkbox" id="showSearch" value="search-visible">
+        <input role="button" type="checkbox" id="showSearch" aria-pressed="false" value="search-visible">
         <input type="text" id="search" aria-label="Type search term and Enter" placeholder="Type search term and Enter key" value=""> 
         <section data-type="titles" class="wrapper">
-            <h1 data-action="goTopShowAll">Naginata</h1>
+            <h1 data-action="goTopShowAll" tabindex="0" aria-label="show all and return to top">Naginata</h1>
             <h2>Unsorted notes</h2>
         </section>
         <button data-action="do-something" value="add" aria-label="add">+</button>
         <ul>
-            <li data-tag="definition">Definition</li>
-            <li data-tag="technique">Technique</li>
-            <li data-tag="standards">Standards</li>
+            <li data-tag="definition" tabindex="0">Definition</li>
+            <li data-tag="technique" tabindex="0">Technique</li>
+            <li data-tag="standards" tabindex="0">Standards</li>
         </ul>
     </nav>
     <main class="wrapper">
