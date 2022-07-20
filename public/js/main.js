@@ -26,7 +26,7 @@ function toggleCheck(e){
 
 // go to top snippet
 const backToTop = document.querySelector('[data-action="goTopShowAll"]')
-backToTop.addEventListener('click', scrollToTop)
+backToTop.addEventListener('click', scrollToTopAndRedirect)
 backToTop.addEventListener('keyup', e =>{checkKeyActivate(e, scrollToTopAndRedirect);})
 
 function scrollToTop() {
@@ -36,7 +36,7 @@ function scrollToTop() {
 
 function scrollToTopAndRedirect(){ //for backToTop only. bc keypress wrapper.
     scrollToTop();
-    location.href = '/'
+    window.location.assign('/')
 }
 
 // filtering
