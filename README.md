@@ -13,12 +13,8 @@ Naginata-focused CRUD app with ejs.
 - Major category tags can now be used to filter results using the filter icon.
 - Scroll to top added on click of main nav title ("Naginata").
 - Update and delete buttons are moved into each notecard. Update still triggers a form at top with auto scroll to top.
-- Video: Youtube allows only httpspages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. So, sadly, videos are all just links for now. 
+- Video: Youtube allows only https pages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. So, sadly, videos are all just links for now. 
 - Might be abusing data attributes a bit. Some cleanup is warranted in the future.
-
-**Bugs**: 
-- When an img url exists on file/in the document, for some reason, not checking the "is this a non-img link" still assigns the asset link to "vidURL" rather than updating the image.
-- The auto scroll up when a form appears makes sense, but sometimes odd behavior results since the showForm is on a toggle. I'd like to be able to let the user hide the form again (currently on second click) but this means, along with the batch-applied event handler, sometimes you go to the top but the form is hidden (you may have clicked update on one entry and decided to click update on another entry. Even number of clicks = form is hidden).
 
 **Optimizations** (in roughly prioritized order): 
 - Make it possible to update more than one field at a time, and clicking into the existing text or information.
@@ -28,7 +24,9 @@ Naginata-focused CRUD app with ejs.
 - Try autodeployment setup.
 - Update stack (apparently current heroku stack is now behind).
 
-**Priorty level**: Low, as I'm focusing on React for next few works. However, bug fix may get prioritized.
+**Bugs**: 
+- When an img url exists on file/in the document, for some reason, not checking the "is this a non-img link" still assigns the asset link to "vidURL" rather than updating the image.
+- The auto scroll up when a form appears makes sense, but sometimes odd behavior results since the showForm is on a toggle. I'd like to be able to let the user hide the form again (currently on second click) but this means, along with the batch-applied event handler, sometimes you go to the top but the form is hidden (you may have clicked update on one entry and decided to click update on another entry. Even number of clicks = form is hidden).
 
 ### Learnings
 In general, nothing has given me more appreciation for how inaccessible even a very simple-looking app can be than the effort of making sure all menu items could be navigated with a keyboard (specifically Tab, and "clicking" on Enter and spacebar). 
@@ -41,7 +39,9 @@ In general, nothing has given me more appreciation for how inaccessible even a v
   - The broader do-somethings event handler may no longer make sense with the individualized button functions.
 - Prior to working on tag filters (using params), linking to CSS and JS files (in the 'public' folder) from index.ejs was fine without a forward slash (express.static was enabled server-side). However, once I started working with params, the CSS and JS files were blocked with the warning "MIME mismatch" regardless of specified attributes. This was solved once a forward slash was prepended to the href values.
 - Making results filterable based on filter keywords: Current setup means reloading the full page with a new url with new filter params applied and uses `window.location.assign(/*path with params variable*/)` which is set up on server side as a read req. However, along with planned rebuild with React, I would probably want to not use EJS and just have a component update upon receiving a fragment of the data to be handled client side.
-- In React, listening to change of input value is "onChange"; here, equivalent event for input with `type="text"` would be "input". It is "change" for `<select>` element. I really like the visual effect of the rendered list updating as you type, but my current setup is not allowing for it (immediately redirects to search?term=TERM). And with the data being handled server side and fed into EJS template, this would be a ton of requests to the server. Looking forward to setting up for better handling client side.
+- In React, listening to change of input value is "onChange"; here, equivalent event for input with `type="text"` would be "input". It is "change" for `<select>` element. I really like the visual effect of the rendered list updating as you type, but my current setup is not allowing for it (immediately redirects to search?term=TERM). And with the data being handled server side and fed into EJS template, this would be costly (a ton of requests to the server). Options:
+  - Set up for handling client side.
+  - Best practice for more complex app is also to debounce to require time elapsed between new character entry to reduce calls to server from excessive rerender and blocking other operations
 - Searchable by title fragment: Syntax differences between MongoDB and Node can cause problems. I'm still using the .find().toArray() approach (.aggregate and $match seems like overkill but worth trying out sometime), but the key is when using regex, in Mongo shell you include forward slashes but you omit these in Node (else you get nothing but an empty array back as nothing will be found).
 - Making filter and search options accessible. Specifying the only keys that should trigger, by keycode (Enter 13, spacebar 32). Because the actual input element is hidden, the listeners needed to be on the labels, but the check toggle had to target the input, which is selected using `nextElementSibling`. Making the actual filter options as well as making the scroll-to-top and reload functionality atteched to `<h1>` element accessible also required additional code. 
 - The order in which one has to tab through previously hidden options, as well as the add/update forms, is extremely unintuitive for keyboard. But changing tabindex to something other than 0 is also strongly discouraged in all online best practices I've seen.
