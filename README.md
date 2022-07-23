@@ -16,10 +16,6 @@ Naginata-focused CRUD app with ejs.
 - Video: Youtube allows only https pages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. So, sadly, videos are all just links for now. 
 - Might be abusing data attributes a bit. Some cleanup is warranted in the future.
 
-**Bugs**: 
-- When an img url exists on file/in the document, for some reason, not checking the "is this a non-img link" still assigns the asset link to "vidURL" rather than updating the image.
-- The auto scroll up when a form appears makes sense, but sometimes odd behavior results since the showForm is on a toggle. I'd like to be able to let the user hide the form again (currently on second click) but this means, along with the batch-applied event handler, sometimes you go to the top but the form is hidden (you may have clicked update on one entry and decided to click update on another entry. Even number of clicks = form is hidden).
-
 **Optimizations** (in roughly prioritized order): 
 - Make it possible to update more than one field at a time, and clicking into the existing text or information.
 - Rebuild any and all of the functionality in React. It will be easier to handle data client side for the desired search functionality.
@@ -28,7 +24,9 @@ Naginata-focused CRUD app with ejs.
 - Try autodeployment setup.
 - Update stack (apparently current heroku stack is now behind).
 
-**Priorty level**: Low, as I'm focusing on React for next few works. However, bug fix may get prioritized.
+**Bugs**: 
+- When an img url exists on file/in the document, for some reason, not checking the "is this a non-img link" still assigns the asset link to "vidURL" rather than updating the image.
+- The auto scroll up when a form appears makes sense, but sometimes odd behavior results since the showForm is on a toggle. I'd like to be able to let the user hide the form again (currently on second click) but this means, along with the batch-applied event handler, sometimes you go to the top but the form is hidden (you may have clicked update on one entry and decided to click update on another entry. Even number of clicks = form is hidden).
 
 ### Learnings
 In general, nothing has given me more appreciation for how inaccessible even a very simple-looking app can be than the effort of making sure all menu items could be navigated with a keyboard (specifically Tab, and "clicking" on Enter and spacebar). 
