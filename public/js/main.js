@@ -82,7 +82,6 @@ async function activateSearch(){
     const searchTerm = search.value;
     try {
         console.log('Continue here line 35')
-        const response = await fetch(`/search?term=${searchTerm}`)
         // send word to backend, find by fragment in title on Mongo. Redirect to page of results.
         location.assign(`/search?term=${searchTerm}`)
     }
