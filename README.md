@@ -13,7 +13,7 @@ Naginata-focused CRUD app with ejs.
 - Major category tags can now be used to filter results using the filter icon.
 - Scroll to top added on click of main nav title ("Naginata").
 - Update and delete buttons are moved into each notecard. Update still triggers a form at top with auto scroll to top.
-- Video: Youtube allows only httpspages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. So, sadly, videos are all just links for now. 
+- Video: Youtube allows only https pages to stream with embeds/iframes so need to launch out of local host and it also depends on the settings applied by the video manager. So, sadly, videos are all just links for now. 
 - Might be abusing data attributes a bit. Some cleanup is warranted in the future.
 
 **Bugs**: 
