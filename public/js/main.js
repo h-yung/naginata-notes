@@ -111,6 +111,7 @@ async function deleteThat(e){
             })
         })
         const data = await response.json()
+        console.log(data)
         location.reload()
     }catch(err){
         console.log(err)
@@ -169,6 +170,7 @@ async function updateEntry(){
                 passcode
             })
         })
+        console.log(response)
         document.querySelector('input[name="edit"]').value = ""
         location.reload()
     }catch(err){
