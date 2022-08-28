@@ -1,10 +1,8 @@
-[[redirects]]
-    from="/*"
-    to="/.netlify/functions/api:splat"
-    status=200 
-    query={keyword =":keyword"}
+es (6 sloc) 118 Bytes
+[build]
+    functions="functions"
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+    to="/.netlify/functions/api:splat"
+    from="/*"
+    status=200 
