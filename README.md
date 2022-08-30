@@ -54,4 +54,4 @@ In general, nothing has given me more appreciation for how inaccessible even a v
 Once switched over to Heroku CLI and with git push heroku main, things started working. At that time, this was not a real CRUD app, only a CRapp.
 
 ### Other quirks:
-- Must whitelist all IP addresses
+- Must whitelist all IP addresses. Both Heroku and Vercel use dynamic IP addresses. 
