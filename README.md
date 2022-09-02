@@ -2,11 +2,11 @@
 A notebook to contain practice notes that can be added, updated, or deleted. Displayed as note cards that you can filter or search by title fragment.
 I'm using this to keep track of my own learnings, but the code can be easily forked and set up with a different database (just add your own connection string and environmental variables).
 
-Current priority is rebuilding with Next.js and deploying somewhere else (probably Vercel). The current app is hosted on Heroku (RIP free tier).
+Formerly hosted on Heroku and now on Cyclic!
 
 **Tech used**: CSS, JavaScript, Node.js, Express, MongoDB, some EJS.
 
-**Live**: https://naginata-notes.herokuapp.com/
+**Live**: https://naginata-notes.cyclic.app/
 
 ![heroku-db-naginata_v3](https://user-images.githubusercontent.com/102257735/179806708-cf5e67e0-1824-4ee8-86fd-58ac0e119723.png)
 
@@ -54,4 +54,4 @@ In general, nothing has given me more appreciation for how inaccessible even a v
 Once switched over to Heroku CLI and with git push heroku main, things started working. At that time, this was not a real CRUD app, only a CRapp.
 
 ### Other quirks:
-- Must whitelist all IP addresses. Both Heroku and Vercel use dynamic IP addresses. 
+- Must whitelist all IP addresses as dynamic IP addresses are used (true for both Cyclic and Heroku).
