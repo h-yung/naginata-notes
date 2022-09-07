@@ -4,7 +4,7 @@ I'm using this to keep track of my own learnings, but the code can be easily for
 
 **Tech used**: CSS, JavaScript, Node.js, Express, MongoDB, some EJS.
 
-**Live**: https://naginata-notes.cyclic.app/
+## [Live app](https://naginata-notes.cyclic.app/)
 
 ![heroku-db-naginata_v3](https://user-images.githubusercontent.com/102257735/179806708-cf5e67e0-1824-4ee8-86fd-58ac0e119723.png)
 
