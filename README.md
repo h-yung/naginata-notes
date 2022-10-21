@@ -6,6 +6,7 @@ I'm using this to keep track of my own learnings, but the code can be easily for
 
 ## [Live app](https://naginata-notes.cyclic.app/)
 
+(Filter active view)
 ![heroku-db-naginata_v3](https://user-images.githubusercontent.com/102257735/179806708-cf5e67e0-1824-4ee8-86fd-58ac0e119723.png)
 
 ## Current state
