@@ -1,6 +1,6 @@
 # Naginata Notes
 A notebook to contain practice notes that can be added, updated, or deleted. Displayed as note cards that you can filter or search by title fragment.
-I'm using this to keep track of my own learnings, but the code can be easily forked and set up with a different database (just add your own connection string and environmental variables).
+I'm using this to keep track of my own learnings, but the code can be easily forked and set up with a different database (just add your own connection string and environmental variables, and edit the specifics for preset filters (currently: Definition, Technique, Standard) for any main tags.
 
 **Tech used**: CSS, JavaScript, Node.js, Express, MongoDB, some EJS.
 
